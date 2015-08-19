@@ -1,0 +1,5 @@
+*.mode1
+*.mode1v3
+*.pbxuser
+CVS
+.DS_Store
