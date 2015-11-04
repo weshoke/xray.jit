@@ -103,12 +103,12 @@ t_jit_err xray_jit_cellcoords_matrix_calc(t_xray_jit_cellcoords *x, void *inputs
 		
 		jit_object_method(in_matrix,_jit_sym_getinfo,&in_minfo);
 		jit_object_method(in_matrix,_jit_sym_getdata,&in_bp);
-		
+
+        //setup internal scratch matrices
+        temp_savelock = (long) jit_object_method(x->temp,_jit_sym_lock,1);
+        jit_object_method(x->temp,_jit_sym_getinfo,&temp_minfo);
+        
 		if (!in_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
-		
-		//setup internal scratch matrices
-		temp_savelock = (long) jit_object_method(x->temp,_jit_sym_lock,1);		
-		jit_object_method(x->temp,_jit_sym_getinfo,&temp_minfo);
 		
 		temp_minfo.dim[0] = in_minfo.dim[0] * in_minfo.dim[1];
 		temp_minfo.dim[1] = 1;
