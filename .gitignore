@@ -3,3 +3,5 @@
 *.pbxuser
 CVS
 .DS_Store
+xcuserdata
+*.xcworkspace

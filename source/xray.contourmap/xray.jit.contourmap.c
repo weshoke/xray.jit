@@ -44,11 +44,11 @@ MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 //
 //=============================================================================
 
-/* 
+/*
 	xray.jit.contourmap
 	Wesley Smith
 	wesley.hoke@gmail.com
-	
+
 	last modified: 12-7-2006
 */
 
@@ -77,22 +77,22 @@ int castab[3][3][3] =
 float intervalLevels[MAX_LEVELS];
 
 
-typedef struct _xray_jit_contourmap 
+typedef struct _xray_jit_contourmap
 {
 	t_object	ob;
 	long		mode;
 	long		levels;
 	float		isolevel[MAX_LEVELS];
 	long 		isolevelcount;
-		
+
 	t_symbol 	*Uname; //Name of the internal matrix
 	void 		*U;
-	
+
 	t_symbol 	*Xname; //Name of the internal matrix
 	void 		*X;
 	t_symbol 	*Yname; //Name of the internal matrix
 	void 		*Y;
-	
+
 } t_xray_jit_contourmap;
 
 void *_xray_jit_contourmap_class;
@@ -104,30 +104,30 @@ void xray_jit_contourmap_free(t_xray_jit_contourmap *x);
 t_jit_err xray_jit_contourmap_matrix_calc(t_xray_jit_contourmap *x, void *inputs, void *outputs);
 
 //data processing methods
-long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcount, long *dim, long planecount, 
-		t_jit_matrix_info *in1_minfo, char *bip1, 
-		float *isolevels, long isolevelcount, 
-		t_jit_matrix_info *in2_minfo, char *bip2, 
-		t_jit_matrix_info *in3_minfo, char *bip3, 
+long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcount, long *dim, long planecount,
+		t_jit_matrix_info *in1_minfo, char *bip1,
+		float *isolevels, long isolevelcount,
+		t_jit_matrix_info *in2_minfo, char *bip2,
+		t_jit_matrix_info *in3_minfo, char *bip3,
 		t_jit_matrix_info *out_minfo, char *bop);
-void xray_jit_contourmap_calc_levels(t_xray_jit_contourmap *obj, 
+void xray_jit_contourmap_calc_levels(t_xray_jit_contourmap *obj,
 		t_jit_matrix_info *in1_minfo, char *bip1);
-void xray_jit_contourmap_fillcoordinates(t_jit_matrix_info *in1_minfo, 
-		char *bip1, t_jit_matrix_info *X_minfo, char *bxp, 
+void xray_jit_contourmap_fillcoordinates(t_jit_matrix_info *in1_minfo,
+		char *bip1, t_jit_matrix_info *X_minfo, char *bxp,
 		t_jit_matrix_info *Y_minfo, char *byp);
 
 //attribute methods
 t_jit_err xray_jit_contourmap_isolevel(t_xray_jit_contourmap *x, void *attr, long argc, t_atom *argv);
-	
-t_jit_err xray_jit_contourmap_init(void) 
+
+t_jit_err xray_jit_contourmap_init(void)
 {
 	long attrflags=0;
 	t_jit_object *attr,*mop,*o;
 	t_symbol *atsym;
 	t_atom a[1];
-	
+
 	atsym = gensym("jit_attr_offset");
-	
+
 	_xray_jit_contourmap_class = jit_class_new("xray_jit_contourmap",(method)xray_jit_contourmap_new,(method)xray_jit_contourmap_free,
 		sizeof(t_xray_jit_contourmap),0L);
 
@@ -135,37 +135,37 @@ t_jit_err xray_jit_contourmap_init(void)
 	mop = jit_object_new(_jit_sym_jit_mop,1,1);
 	jit_mop_single_planecount(mop,1);
 	jit_atom_setsym(a,_jit_sym_float32);
-	
+
 	o = jit_object_method(mop,_jit_sym_getinput,1);
 	jit_object_method(o,_jit_sym_types,1,a);
-	
+
 	o = jit_object_method(mop,_jit_sym_getoutput,1);
 	jit_object_method(o,_jit_sym_types,1,a);
 	jit_attr_setlong(o,_jit_sym_dimlink,0);
-	
+
 	jit_class_addadornment(_xray_jit_contourmap_class,mop);
 
 	//add methods
 	jit_class_addmethod(_xray_jit_contourmap_class, (method)xray_jit_contourmap_matrix_calc, 		"matrix_calc", 		A_CANT, 0L);
-	
-	//add attributes	
+
+	//add attributes
 	attrflags = JIT_ATTR_GET_DEFER_LOW | JIT_ATTR_SET_USURP_LOW;
-	
+
 	//mode
 	attr = jit_object_new(atsym,"mode",_jit_sym_long,attrflags,
 		(method)0L,(method)0L,calcoffset(t_xray_jit_contourmap,mode));
 	jit_class_addattr(_xray_jit_contourmap_class,attr);
-	
+
 	//levels
 	attr = jit_object_new(atsym,"levels",_jit_sym_long,attrflags,
 		(method)0L,(method)0L,calcoffset(t_xray_jit_contourmap,levels));
 	jit_class_addattr(_xray_jit_contourmap_class,attr);
-	
+
 	//isolevel
 	attr = jit_object_new(_jit_sym_jit_attr_offset_array,"isolevel",_jit_sym_float32,10,attrflags,
 		(method)0L,(method)xray_jit_contourmap_isolevel,calcoffset(t_xray_jit_contourmap,isolevelcount),calcoffset(t_xray_jit_contourmap,isolevel));
 	jit_class_addattr(_xray_jit_contourmap_class,attr);
-	
+
 	jit_class_register(_xray_jit_contourmap_class);
 
 	return JIT_ERR_NONE;
@@ -175,11 +175,11 @@ t_jit_err xray_jit_contourmap_isolevel(t_xray_jit_contourmap *x, void *attr, lon
 {
 	float temp;
 	long i,j;
-	
+
 	for (i=0; i< MIN(argc, 10); i++) {
 		x->isolevel[i] = jit_atom_getfloat(argv+i);
 	}
-	
+
 	//sort isolevels into ascending order
 	for (i=0; i < MIN(argc, 10); i++) {
 		for (j=0; j < MIN(argc, 10)-i;  j++) {
@@ -195,9 +195,9 @@ t_jit_err xray_jit_contourmap_isolevel(t_xray_jit_contourmap *x, void *attr, lon
 		argc = 1;
 		x->isolevel[0] = 0.5;
 	}
-	
+
 	x->isolevelcount = MIN(argc, 10);
-	
+
 	return JIT_ERR_NONE;
 }
 
@@ -210,134 +210,134 @@ t_jit_err xray_jit_contourmap_matrix_calc(t_xray_jit_contourmap *x, void *inputs
 	long i,dimcount,planecount,dim[JIT_MATRIX_MAX_DIMCOUNT];
 	void *in1_matrix, *out_matrix;
 	long count;
-	
+
 	char *U_bp, *X_bp, *Y_bp;
 	t_jit_matrix_info U_minfo, X_minfo, Y_minfo;
 	long U_savelock, X_savelock, Y_savelock;
 	float *fop, *fup;
-	
+
 	in1_matrix 	= jit_object_method(inputs,_jit_sym_getindex,0);
 	out_matrix = jit_object_method(outputs,_jit_sym_getindex,0);
 
 	if (x&&in1_matrix&&out_matrix) {
 		in1_savelock = (long) jit_object_method(in1_matrix,_jit_sym_lock,1);
 		out_savelock = (long) jit_object_method(out_matrix,_jit_sym_lock,1);
-		
-		jit_object_method(in1_matrix,_jit_sym_getinfo,&in1_minfo);		
+
+		jit_object_method(in1_matrix,_jit_sym_getinfo,&in1_minfo);
 		jit_object_method(in1_matrix,_jit_sym_getdata,&in1_bp);
-		
+
 		if (!in1_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
-		
+
 		//setup internal scratch matrices
-		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);		
+		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);
 		jit_object_method(x->U,_jit_sym_getinfo,&U_minfo);
-		
+
 		if(x->mode == 0) {
 			U_minfo.dim[0] = in1_minfo.dim[0] * in1_minfo.dim[1] * 4 * x->levels;
 		}
 		else {
 			U_minfo.dim[0] = in1_minfo.dim[0] * in1_minfo.dim[1] * 4 * x->isolevelcount;
 		}
-		
+
 		U_minfo.dim[1] = 1;
 		U_minfo.planecount = 3;
 		jit_object_method(x->U,_jit_sym_setinfo,&U_minfo);
 		jit_object_method(x->U,_jit_sym_getinfo,&U_minfo);
-		
+
 		jit_object_method(x->U,_jit_sym_getdata,&U_bp);
-		
+
 		if (!x->U) { err=JIT_ERR_INVALID_PTR; goto out;}
-		
-		//setup coordinate vectors X and Y based on x->x[] and x->y[] endpoints	
+
+		//setup coordinate vectors X and Y based on x->x[] and x->y[] endpoints
 		X_savelock = (long) jit_object_method(x->X,_jit_sym_lock,1);
 		Y_savelock = (long) jit_object_method(x->Y,_jit_sym_lock,1);
 		jit_object_method(x->X,_jit_sym_getinfo,&X_minfo);
 		jit_object_method(x->Y,_jit_sym_getinfo,&Y_minfo);
-		
+
 		if(X_minfo.dim[0] != in1_minfo.dim[0] || X_minfo.dim[1] != 1)
 		{
 			X_minfo.dim[0] = in1_minfo.dim[0];
 			X_minfo.dim[1] = 1;
 		}
-		
+
 		if(Y_minfo.dim[0] != in1_minfo.dim[1] || Y_minfo.dim[1] != 1)
 		{
 			Y_minfo.dim[0] = in1_minfo.dim[1];
 			Y_minfo.dim[1] = 1;
-		}		
-		
+		}
+
 		jit_object_method(x->X,_jit_sym_setinfo,&X_minfo);
 		jit_object_method(x->Y,_jit_sym_setinfo,&Y_minfo);
-		
+
 		jit_object_method(x->X,_jit_sym_getinfo,&X_minfo);
 		jit_object_method(x->Y,_jit_sym_getinfo,&Y_minfo);
-		
+
 		jit_object_method(x->X,_jit_sym_getdata,&X_bp);
 		jit_object_method(x->Y,_jit_sym_getdata,&Y_bp);
-		
+
 		if (!x->X) { err=JIT_ERR_INVALID_PTR; goto out;}
 		if (!x->Y) { err=JIT_ERR_INVALID_PTR; goto out;}
-		
+
 		//compatible planes?
-		if (in1_minfo.planecount!=3) { 
-			err=JIT_ERR_MISMATCH_PLANE; 
+		if (in1_minfo.planecount!=3) {
+			err=JIT_ERR_MISMATCH_PLANE;
 			error("three plane matrices only");
 			goto out;
-		}		
-			
+		}
+
 		//get dimensions/planecount
 		dimcount   = in1_minfo.dimcount;
-		planecount = in1_minfo.planecount;			
-		
+		planecount = in1_minfo.planecount;
+
 		for (i=0;i<dimcount;i++) {
 			dim[i] = in1_minfo.dim[i];
 			if ((in1_minfo.dim[i]<dim[i])) dim[i] = in1_minfo.dim[i];
 		}
-		
+
 		xray_jit_contourmap_fillcoordinates(&in1_minfo, in1_bp, &X_minfo, X_bp, &Y_minfo, Y_bp);
-		
+
 		if(x->mode == 0) {
 			xray_jit_contourmap_calc_levels(x, &in1_minfo, in1_bp);
-			count = xray_jit_contourmap_calculate_ndim(x, dimcount, dim, planecount, 
-					&in1_minfo, in1_bp, 
-					intervalLevels, x->levels, 
-					&X_minfo, X_bp, 
-					&Y_minfo, Y_bp, 
+			count = xray_jit_contourmap_calculate_ndim(x, dimcount, dim, planecount,
+					&in1_minfo, in1_bp,
+					intervalLevels, x->levels,
+					&X_minfo, X_bp,
+					&Y_minfo, Y_bp,
 					&U_minfo, U_bp);
 		}
 		else {
-			count = xray_jit_contourmap_calculate_ndim(x, dimcount, dim, planecount, 
-					&in1_minfo, in1_bp, 
-					x->isolevel, x->isolevelcount, 
-					&X_minfo, X_bp, 
-					&Y_minfo, Y_bp, 
+			count = xray_jit_contourmap_calculate_ndim(x, dimcount, dim, planecount,
+					&in1_minfo, in1_bp,
+					x->isolevel, x->isolevelcount,
+					&X_minfo, X_bp,
+					&Y_minfo, Y_bp,
 					&U_minfo, U_bp);
 		}
-		
+
 		jit_object_method(out_matrix,_jit_sym_getinfo,&out_minfo);
-		
+
 		out_minfo.dim[0] = count;
 		out_minfo.dim[1] = 1;
 		out_minfo.planecount = 3;
-		
+
 		jit_object_method(out_matrix, _jit_sym_setinfo, &out_minfo);
 		jit_object_method(out_matrix,_jit_sym_getinfo,&out_minfo);
 
 		jit_object_method(out_matrix,_jit_sym_getdata,&out_bp);
-		
+
 		if (!out_bp) { err=JIT_ERR_INVALID_OUTPUT; goto out;}
-		
+
 		fop = (float *)out_bp;
 		fup = (float *)U_bp;
-		
+
 		for(i=0; i < count*out_minfo.planecount; i++)
 			fop[i] = fup[i];
-		
+
 	}
 	else {
 		return JIT_ERR_INVALID_PTR;
 	}
-	
+
 out:
 	jit_object_method(out_matrix,gensym("lock"),out_savelock);
 	jit_object_method(in1_matrix,gensym("lock"),in1_savelock);
@@ -354,18 +354,18 @@ void xray_jit_contourmap_calc_levels(t_xray_jit_contourmap *obj, t_jit_matrix_in
 	float *fip;
 	long in_rowstride, planecount, index;
 	float step;
-	
+
 	planecount = in1_minfo->planecount;
 	index = planecount-1;
 	in_rowstride = in1_minfo->dimstride[1];
-	
+
 	fip = (float *)(bip1);
 	zmin = fip[index];
 	zmax = zmin;
-	
+
 	for(i=0; i < in1_minfo->dim[1]; i++) {
 		fip = (float *)(bip1 + i*in_rowstride);
-		
+
 		for(j=0; j < in1_minfo->dim[0]; j++) {
 			if(fip[index] > zmax) {
 				zmax = fip[index];
@@ -373,14 +373,14 @@ void xray_jit_contourmap_calc_levels(t_xray_jit_contourmap *obj, t_jit_matrix_in
 			else if(fip[index] < zmin) {
 				zmin = fip[index];
 			}
-			
+
 			fip += planecount;
 		}
 	}
-	
+
 	step = (zmax-zmin)/(obj->levels + 1);
 	intervalLevels[0] = zmin + step;
-	
+
 	for(i=1; i < obj->levels; i++) {
 		intervalLevels[i] = intervalLevels[i-1] + step;
 	}
@@ -390,26 +390,26 @@ void xray_jit_contourmap_fillcoordinates(t_jit_matrix_info *in1_minfo, char *bip
 {
 	float *fxp, *fyp, *fip1;
 	long i, planecount, in1_rowspan;
-	
+
 	planecount = in1_minfo->planecount;
 	in1_rowspan = in1_minfo->dimstride[1];
-	
+
 	fxp = (float *)bxp;
 	fip1 = (float *)(bip1);
-	
+
 	for(i=0; i < X_minfo->dim[0]; i++) {
 		fxp[i] = fip1[0];
 		fip1 += planecount;
 	}
-	
+
 	fyp = (float *)byp;
-	
+
 	for(i=0; i < Y_minfo->dim[0]; i++) {
 		fyp[i] = *((float *)(bip1 + i*in1_rowspan) + 1);
 	}
 }
 
-long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcount, long *dim, long planecount, t_jit_matrix_info *in1_minfo, char *bip1, 
+long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcount, long *dim, long planecount, t_jit_matrix_info *in1_minfo, char *bip1,
 	float *isolevels, long isolevelcount, t_jit_matrix_info *in2_minfo, char *bip2, t_jit_matrix_info *in3_minfo, char *bip3, t_jit_matrix_info *out_minfo, char *bop)
 {
 	long height, width, in1colspan, in1rowspan, outcolspan, outrowspan;
@@ -424,43 +424,43 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 	long ilb, iub, jlb, jub;
 	long nc;
 	long counter = 0;
-	
+
 	ilb = 0;
 	iub = in1_minfo->dim[0]-1;
 	jlb = 0;
 	jub = in1_minfo->dim[1]-1;
 	nc = isolevelcount;
-		
+
 	x = (float *)bip2;
 	y = (float *)bip3;
-	
+
 	if (dimcount<1) return 0; //safety
-	
+
 	switch(dimcount) {
 	case 1:
 		dim[1]=1;
 	case 2:
 		width  = dim[0];
 		height = dim[1];
-		
+
 		in1colspan = in1_minfo->dimstride[0];
 		in1rowspan = in1_minfo->dimstride[1];
 		outcolspan = out_minfo->dimstride[0];
 		outrowspan = out_minfo->dimstride[1];
-		
-		if (out_minfo->type==_jit_sym_float32) {			
+
+		if (out_minfo->type==_jit_sym_float32) {
 			for (j=(jub-1); j >= jlb; j--) {
 				for (i=ilb; i <= iub-1; i++) {
 					double temp1,temp2;
-					
+
 					temp1 = (double)MIN(*((float *)(bip1 + i*in1colspan + j*in1rowspan)+2), *((float *)(bip1 + i*in1colspan + (j+1)*in1rowspan)+2));
 					temp2 = (double)MIN(*((float *)(bip1 + (i+1)*in1colspan + j*in1rowspan)+2), *((float *)(bip1 + (i+1)*in1colspan + (j+1)*in1rowspan)+2));
 					dmin = (double)MIN(temp1,temp2);
-					
+
 					temp1 = (double)MAX(*((float *)(bip1 + i*in1colspan + j*in1rowspan)+2), *((float *)(bip1 + i*in1colspan + (j+1)*in1rowspan)+2));
 					temp2 = (double)MAX(*((float *)(bip1 + (i+1)*in1colspan + j*in1rowspan)+2), *((float *)(bip1 + (i+1)*in1colspan + (j+1)*in1rowspan)+2));
-					dmax = (double)MAX(temp1,temp2);					
-					
+					dmax = (double)MAX(temp1,temp2);
+
 					if (dmax >= isolevels[0] && dmin <= isolevels[nc-1]) {
 						for (k=0;  k < nc; k++) {
 							if ((double)isolevels[k] >= dmin && (double)isolevels[k] <= dmax) {
@@ -475,7 +475,7 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 										xh[0]=(double)(0.5*(x[i]+x[i+1]));
 										yh[0]=(double)(0.5*(y[j]+y[j+1]));
 									}
-						
+
 									if (h[m]>0.0) {
 										sh[m] = 1;
 									}
@@ -485,7 +485,7 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 									else
 										sh[m] = 0;
 								}
-						
+
 								//=================================================================
 								//
 								// Note: at this stage the relative heights of the corners and the
@@ -518,7 +518,7 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 								//               Scan each triangle in the box
 								//
 								//=================================================================
-								
+
 
 								for (m=1; m <= 4; m++) {
 									m1 = m;
@@ -528,9 +528,9 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 										m3 = m+1;
 									else
 										m3 = 1;
-									
+
 									case_value = castab[sh[m1]+1][sh[m2]+1][sh[m3]+1];
-															
+
 									if (case_value != 0) {
 										switch (case_value) {
 										//===========================================================
@@ -617,14 +617,14 @@ long xray_jit_contourmap_calculate_ndim(t_xray_jit_contourmap *obj, long dimcoun
 										default:
 											break;
 										}
-										
+
 										if(counter < out_minfo->dim[0]) {
 											*((float *)(bop + counter*outcolspan) + 0) = (float)x1;
 											*((float *)(bop + counter*outcolspan) + 1) = (float)y1;
 											*((float *)(bop + counter*outcolspan) + 2) = isolevels[k];
-											
+
 											counter++;
-											
+
 											*((float *)(bop + counter*outcolspan) + 0) = (float)x2;
 											*((float *)(bop + counter*outcolspan) + 1) = (float)y2;
 											*((float *)(bop + counter*outcolspan) + 2) = isolevels[k];
@@ -652,25 +652,25 @@ t_xray_jit_contourmap *xray_jit_contourmap_new(void)
 	t_xray_jit_contourmap *x;
 	void *m;
 	t_jit_matrix_info info;
-		
+
 	if (x=(t_xray_jit_contourmap *)jit_object_alloc(_xray_jit_contourmap_class))
 	{
 		x->mode = 0;
 		x->levels = 2;
 		x->isolevelcount = 2;
-	
+
 		jit_matrix_info_default(&info);
 		info.type = _jit_sym_float32;
 		info.planecount = 1;
 		x->Uname = jit_symbol_unique();
 		m = jit_object_new(_jit_sym_jit_matrix, &info);
 		m = jit_object_method(m, _jit_sym_register, x->Uname);
-		
+
 		//Register matrix name
 		if(!m) error("could not allocate internal matrix!");
 		jit_object_attach(x->Uname, x);
 		x->U = m;
-		
+
 		//coordinate matrices (X, Y)
 		jit_matrix_info_default(&info);
 		info.type = _jit_sym_float32;
@@ -678,19 +678,19 @@ t_xray_jit_contourmap *xray_jit_contourmap_new(void)
 		x->Xname = jit_symbol_unique();
 		m = jit_object_new(_jit_sym_jit_matrix, &info);
 		m = jit_object_method(m, _jit_sym_register, x->Xname);
-		
+
 		//Register matrix name
 		if(!m) error("could not allocate internal matrix!");
 		jit_object_attach(x->Xname, x);
 		x->X = m;
-		
+
 		jit_matrix_info_default(&info);
 		info.type = _jit_sym_float32;
 		info.planecount = 1;
 		x->Yname = jit_symbol_unique();
 		m = jit_object_new(_jit_sym_jit_matrix, &info);
 		m = jit_object_method(m, _jit_sym_register, x->Yname);
-		
+
 		//Register matrix name
 		if(!m) error("could not allocate internal matrix!");
 		jit_object_attach(x->Yname, x);
@@ -699,7 +699,7 @@ t_xray_jit_contourmap *xray_jit_contourmap_new(void)
 	else
 	{
 		x = NULL;
-	}	
+	}
 	return x;
 }
 
@@ -707,10 +707,10 @@ void xray_jit_contourmap_free(t_xray_jit_contourmap *x)
 {
 	jit_object_detach(x->Uname, x); //Detach matrix from object
 	jit_object_free(x->U); //Free matrix memory
-	
+
 	jit_object_detach(x->Xname, x); //Detach matrix from object
 	jit_object_free(x->X); //Free matrix memory
-	
+
 	jit_object_detach(x->Yname, x); //Detach matrix from object
 	jit_object_free(x->Y); //Free matrix memory
 }
