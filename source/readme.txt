@@ -1,0 +1,1 @@
+Assumed location of the source code is in the Max SDK, in a subfolder of the "source" folder.
