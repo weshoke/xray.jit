@@ -135,7 +135,7 @@ void xray_jit_cellvalue_calculate_ndim(t_xray_jit_cellvalue *obj, long dimcount,
 	long outplanecount, outrowspan;
 	float *fip1, *fip2, *fop;
 	uchar *cip1, *cop;
-	long *lip1, *lop;
+	t_int32 *lip1, *lop;
 	double *dip1, *dop;
 
 	if (dimcount<1) return; //safety
@@ -180,10 +180,10 @@ void xray_jit_cellvalue_calculate_ndim(t_xray_jit_cellvalue *obj, long dimcount,
 		else if (out_minfo->type==_jit_sym_long) {
 			for(i=0; i < height2; i++) {
 				fip2 = (float *)(bip2 + i*in2rowspan);
-				lop = (long *)(bop + i*outrowspan);
+				lop = (t_int32 *)(bop + i*outrowspan);
 
 				for(j=0; j < width2; j++) {
-					lip1 = (long *)(bip1 + (long)(fip2[0])*in1colspan + (long)(fip2[1])*in1rowspan);
+					lip1 = (t_int32 *)(bip1 + (long)(fip2[0])*in1colspan + (long)(fip2[1])*in1rowspan);
 
 					for(k=0; k < in1planecount; k++) {
 						lop[k] = lip1[k];

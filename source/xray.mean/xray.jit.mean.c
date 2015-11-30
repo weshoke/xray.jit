@@ -222,7 +222,7 @@ void xray_jit_mean_calculate_ndim(t_xray_jit_mean *x, long dimcount, long *dim,
 	long i,j,k;
 	uchar *ip1, *op1;
 	float *fop, *fip;
-	long *lip;
+	t_int32 *lip;
 	double *dip, *dop;
 
 	if (dimcount<1) return; //safety
@@ -278,7 +278,7 @@ void xray_jit_mean_calculate_ndim(t_xray_jit_mean *x, long dimcount, long *dim,
 
 					for (j=0; j < dim[1]; j++)
 					{
-						lip = (long *)(bip1 + i*in1_minfo->dimstride[0] + j*in1_minfo->dimstride[1]);
+						lip = (t_int32 *)(bip1 + i*in1_minfo->dimstride[0] + j*in1_minfo->dimstride[1]);
 
 						for(k=0; k < in1_minfo->planecount; k++)
 						{
@@ -291,7 +291,7 @@ void xray_jit_mean_calculate_ndim(t_xray_jit_mean *x, long dimcount, long *dim,
 			{
 				for(i=0; i < dim[1]; i++)
 				{
-					lip = (long *)(bip1 + i*in1_minfo->dimstride[1]);
+					lip = (t_int32 *)(bip1 + i*in1_minfo->dimstride[1]);
 					fop = (float *)(bop1 + i*out1_minfo->dimstride[1]);
 
 					for(j=0; j < dim[0]; j++)

@@ -141,8 +141,8 @@ void xray_jit_invertrepos_calculate_ndim(t_xray_jit_invertrepos *x, long dimcoun
 				for(j=0; j < width; j++)
 				{
 					offsetin = j*in1_minfo->dimstride[0] + i*in1_minfo->dimstride[1];
-					lxoff = CLAMP(*(long *)(bip1 + offsetin), 0, minX);
-					lyoff = CLAMP(*((long *)(bip1 + offsetin) + 1 ), 0, minY);
+					lxoff = CLAMP(*(t_int32 *)(bip1 + offsetin), 0, minX);
+					lyoff = CLAMP(*((t_int32 *)(bip1 + offsetin) + 1 ), 0, minY);
 
 					offsetout = (lxoff)*out_minfo->dimstride[0] + (lyoff)*out_minfo->dimstride[1];
 					*(uchar *)(bop + offsetout) = j;
@@ -160,12 +160,12 @@ void xray_jit_invertrepos_calculate_ndim(t_xray_jit_invertrepos *x, long dimcoun
 				for(j=0; j < width; j++)
 				{
 					offsetin = j*in1_minfo->dimstride[0] + i*in1_minfo->dimstride[1];
-					lxoff = CLAMP(*(long *)(bip1 + offsetin), 0, out_minfo->dim[0]-1);
-					lyoff = CLAMP(*((long *)(bip1 + offsetin) + 1 ), 0, out_minfo->dim[0]-1);
+					lxoff = CLAMP(*(t_int32 *)(bip1 + offsetin), 0, out_minfo->dim[0]-1);
+					lyoff = CLAMP(*((t_int32 *)(bip1 + offsetin) + 1 ), 0, out_minfo->dim[0]-1);
 
 					offsetout = (lxoff)*out_minfo->dimstride[0] + (lyoff)*out_minfo->dimstride[1];
-					*(long *)(bop + offsetout) = j;
-					*((long *)(bop + offsetout) + 1 ) = i;
+					*(t_int32 *)(bop + offsetout) = j;
+					*((t_int32 *)(bop + offsetout) + 1 ) = i;
 				}
 			}
 		}

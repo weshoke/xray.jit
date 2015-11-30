@@ -130,6 +130,8 @@ t_jit_err xray_jit_water_matrix_calc(t_xray_jit_water *x, void *inputs, void *ou
 			x->dim[1] = in1_minfo.dim[1];
 		}
 
+		previous_savelock = (long) jit_object_method(x->previous, _jit_sym_lock, 1);
+
 		if (!in1_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
 		if (!in2_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
 		if (!out_bp) { err=JIT_ERR_INVALID_OUTPUT; goto out;}
@@ -157,7 +159,6 @@ t_jit_err xray_jit_water_matrix_calc(t_xray_jit_water *x, void *inputs, void *ou
 			if ((in1_minfo.dim[i]<dim[i])) dim[i] = in1_minfo.dim[i];
 		}
 
-		previous_savelock = (long) jit_object_method(x->previous, _jit_sym_lock, 1);
 		jit_object_method(x->previous,_jit_sym_getinfo,&previous_minfo);
 
 		if(x->calced == 0) {

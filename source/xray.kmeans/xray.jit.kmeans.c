@@ -262,10 +262,10 @@ void xray_jit_kmeans_calculate_ndim(t_xray_jit_kmeans *x, long dimcount, long *d
 	long i, j, k, closestCluster;
 	long planecount;
 	float difference, minDistance, tempDistance;
-	long *clusterCount, currentCluster;
+	t_int32 *clusterCount, currentCluster;
 	char equal;
 
-	clusterCount = (long *)jit_getbytes(out3_minfo->dimstride[0]*x->clusters);
+	clusterCount = (t_int32 *)jit_getbytes(out3_minfo->dimstride[0]*x->clusters);
 
 	if (dimcount<1) return; //safety
 
@@ -309,7 +309,7 @@ void xray_jit_kmeans_calculate_ndim(t_xray_jit_kmeans *x, long dimcount, long *d
 							}
 						}
 
-						*(long *)(bop3 + i*out3_minfo->dimstride[1]) = closestCluster;
+						*(t_int32 *)(bop3 + i*out3_minfo->dimstride[1]) = closestCluster;
 					}
 
 					//init cluster count
@@ -318,7 +318,7 @@ void xray_jit_kmeans_calculate_ndim(t_xray_jit_kmeans *x, long dimcount, long *d
 					}
 
 					for(i=0; i < out3_minfo->dim[1]; i++) {
-						currentCluster = *(long *)(bop3+i*out3_minfo->dimstride[1]);
+						currentCluster = *(t_int32 *)(bop3+i*out3_minfo->dimstride[1]);
 						clusterCount[currentCluster]++;
 
 						if(clusterCount[currentCluster] == 1) {
@@ -382,7 +382,7 @@ void xray_jit_kmeans_calculate_ndim(t_xray_jit_kmeans *x, long dimcount, long *d
 							}
 						}
 
-						*(long *)(bop3 + i*out3_minfo->dimstride[0]) = closestCluster;
+						*(t_int32 *)(bop3 + i*out3_minfo->dimstride[0]) = closestCluster;
 					}
 
 					//init cluster count
@@ -391,7 +391,7 @@ void xray_jit_kmeans_calculate_ndim(t_xray_jit_kmeans *x, long dimcount, long *d
 					}
 
 					for(i=0; i < out3_minfo->dim[0]; i++) {
-						currentCluster = *(long *)(bop3+i*out3_minfo->dimstride[0]);
+						currentCluster = *(t_int32 *)(bop3+i*out3_minfo->dimstride[0]);
 						clusterCount[currentCluster]++;
 
 						if(clusterCount[currentCluster] == 1) {

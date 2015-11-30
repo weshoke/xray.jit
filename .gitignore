@@ -5,3 +5,4 @@ CVS
 .DS_Store
 xcuserdata
 *.xcworkspace
+build
