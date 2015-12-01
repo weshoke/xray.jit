@@ -694,7 +694,7 @@ void xray_jit_svd_sort(t_xray_jit_svd *x, long dimcount, long *dim, long planeco
 		t_jit_matrix_info *V_minfo, char* V)
 {
 	long i, j, ltmp, out_Hoffset, in_Hoffset;
-	long *indices = (long *)jit_getbytes(out2_minfo->dim[0]*out2_minfo->dimstride[0]);
+	long *indices = (long *)jit_getbytes(out2_minfo->dim[0]*sizeof(long));
 	float *fop2, ftmp;
 	double *dop2, dtmp;
 
@@ -797,7 +797,7 @@ void xray_jit_svd_sort(t_xray_jit_svd *x, long dimcount, long *dim, long planeco
 		}
 	}
 
-	jit_freebytes((void *)indices, out2_minfo->dim[0]*out2_minfo->dimstride[0]);
+	jit_freebytes((void *)indices, out2_minfo->dim[0]*sizeof(long));
 }
 
 t_xray_jit_svd *xray_jit_svd_new(void)
