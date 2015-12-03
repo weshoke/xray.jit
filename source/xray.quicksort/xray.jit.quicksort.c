@@ -231,7 +231,7 @@ void xray_jit_quicksort_calculate_ndim(t_xray_jit_quicksort *x, long dimcount, l
 
 					for(j=0; j < dim[1]; j++) {
 						for(k=0; k < planecount; k++) {
-							*(long *)fop = *(long *)fip;
+							*(t_int32 *)fop = *(t_int32 *)fip;
 							fip += 4;
 							fop += 4;
 						}
@@ -493,11 +493,11 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 		//check summode
 		if(x->summode) {
 			for(k=0; k < planecount; k++) {
-				mid += *(long *)(lop_start + midpoint*out_minfo->dimstride[x->dimmode] + k*bytes);
+				mid += *(t_int32 *)(lop_start + midpoint*out_minfo->dimstride[x->dimmode] + k*bytes);
 			}
 		}
 		else {
-			mid = *(long *)(lop_start + midpoint*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
+			mid = *(t_int32 *)(lop_start + midpoint*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
 		}
 
 		do {
@@ -506,11 +506,11 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 				losum = 0;
 
 				for(k=0; k < planecount; k++) {
-					losum += *(long *)(lop_start + i*out_minfo->dimstride[x->dimmode] + k*bytes);
+					losum += *(t_int32 *)(lop_start + i*out_minfo->dimstride[x->dimmode] + k*bytes);
 				}
 			}
 			else {
-				losum = *(long *)(lop_start + i*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
+				losum = *(t_int32 *)(lop_start + i*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
 			}
 
 			//get low value from left-hand side
@@ -521,11 +521,11 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 					losum = 0;
 
 					for(k=0; k < planecount; k++) {
-						losum += *(long *)(lop_start + i*out_minfo->dimstride[x->dimmode] + k*bytes);
+						losum += *(t_int32 *)(lop_start + i*out_minfo->dimstride[x->dimmode] + k*bytes);
 					}
 				}
 				else {
-					losum = *(long *)(lop_start + i*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
+					losum = *(t_int32 *)(lop_start + i*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
 				}
 			}
 
@@ -534,11 +534,11 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 				hisum = 0;
 
 				for(k=0; k < planecount; k++) {
-					hisum += *(long *)(lop_start + j*out_minfo->dimstride[x->dimmode] + k*bytes);
+					hisum += *(t_int32 *)(lop_start + j*out_minfo->dimstride[x->dimmode] + k*bytes);
 				}
 			}
 			else {
-				hisum = *(long *)(lop_start + j*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
+				hisum = *(t_int32 *)(lop_start + j*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
 			}
 
 			//get high value from right-hand side
@@ -549,11 +549,11 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 					hisum = 0;
 
 					for(k=0; k < planecount; k++) {
-						hisum += *(long *)(lop_start + j*out_minfo->dimstride[x->dimmode] + k*bytes);
+						hisum += *(t_int32 *)(lop_start + j*out_minfo->dimstride[x->dimmode] + k*bytes);
 					}
 				}
 				else {
-					hisum = *(long *)(lop_start + j*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
+					hisum = *(t_int32 *)(lop_start + j*out_minfo->dimstride[x->dimmode] + x->planemode*bytes);
 				}
 			}
 
@@ -563,9 +563,9 @@ long xray_jit_quicksort_sort_long(t_xray_jit_quicksort *x,
 					lodata = lop_start + i*out_minfo->dimstride[x->dimmode] + k*bytes;
 					hidata = lop_start + j*out_minfo->dimstride[x->dimmode] + k*bytes;
 
-					*(long *)h = *(long *)lodata;
-					*(long *)lodata = *(long *)hidata;
-					*(long *)hidata = *(long *)h;
+					*(t_int32 *)h = *(t_int32 *)lodata;
+					*(t_int32 *)lodata = *(t_int32 *)hidata;
+					*(t_int32 *)hidata = *(t_int32 *)h;
 				}
 
 				i++;

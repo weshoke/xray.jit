@@ -261,8 +261,8 @@ void xray_jit_distance_calculate_ndim(t_xray_jit_distance *x, long dimcount, lon
 				{
 					lip1 = bip1 + i*inrowspan;
 					lop  = bop + i*outrowspan;
-					*(long *)lop = *(long *)lip1;
-					lprev = *(long *)lop;
+					*(t_int32 *)lop = *(t_int32 *)lip1;
+					lprev = *(t_int32 *)lop;
 					lprev++;
 
 					for(j=1; j < height; j++)
@@ -270,20 +270,20 @@ void xray_jit_distance_calculate_ndim(t_xray_jit_distance *x, long dimcount, lon
 						lip1 += incolspan;
 						lop  += outcolspan;
 
-						*(long *)lop = MIN(*(long *)lip1, lprev);
-						lprev = *(long *)lop;
+						*(t_int32 *)lop = MIN(*(t_int32 *)lip1, lprev);
+						lprev = *(t_int32 *)lop;
 						lprev++;
 					}
 
 					lop  = bop + i*inrowspan + (height-1)*outcolspan;
-					lprev = *(long *)lop;
+					lprev = *(t_int32 *)lop;
 					lprev++;
 
 					for(j=height-2; j >= 0; j--)
 					{
 						lop -= outcolspan;
-						*(long *)lop = MIN(*(long *)lop, lprev);
-						lprev = *(long *)lop;
+						*(t_int32 *)lop = MIN(*(t_int32 *)lop, lprev);
+						lprev = *(t_int32 *)lop;
 						lprev++;
 					}
 				}
@@ -297,43 +297,43 @@ void xray_jit_distance_calculate_ndim(t_xray_jit_distance *x, long dimcount, lon
 					{
 						lip1 = bip1 + j*incolspan;
 						lop  = bop + j*outcolspan;
-						*lop = *(long *)lip1;
-						lprev = *(long *)lop;
+						*lop = *(t_int32 *)lip1;
+						lprev = *(t_int32 *)lop;
 						lprev++;
 
 						for(i=1; i < width; i++)
 						{
 							lip1 += inrowspan;
 							lop += outrowspan;
-							*(long *)lop = MIN(*(long *)lip1, lprev);
-							lprev = *(long *)lop;
+							*(t_int32 *)lop = MIN(*(t_int32 *)lip1, lprev);
+							lprev = *(t_int32 *)lop;
 							lprev++;
 						}
 					}
 					else
 					{
 						lop  = bop + j*outcolspan;
-						lprev = *(long *)lop;
+						lprev = *(t_int32 *)lop;
 						lprev++;
 
 						for(i=1; i < width; i++)
 						{
 							lop += outrowspan;
-							*(long *)lop = MIN(*(long *)lop, lprev);
-							lprev = *(long *)lop;
+							*(t_int32 *)lop = MIN(*(t_int32 *)lop, lprev);
+							lprev = *(t_int32 *)lop;
 							lprev++;
 						}
 					}
 
 					lop  = bop + (width-1)*inrowspan + j*outcolspan;
-					lprev = *(long *)lop;
+					lprev = *(t_int32 *)lop;
 					lprev++;
 
 					for(i=width-2; i >= 0; i--)
 					{
 						lop -= outrowspan;
-						*(long *)lop = MIN(*(long *)lop, lprev);
-						lprev = *(long *)lop;
+						*(t_int32 *)lop = MIN(*(t_int32 *)lop, lprev);
+						lprev = *(t_int32 *)lop;
 						lprev++;
 					}
 				}

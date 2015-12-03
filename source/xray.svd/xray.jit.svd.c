@@ -127,15 +127,15 @@ t_jit_err xray_jit_svd_matrix_calc(t_xray_jit_svd *x, void *inputs, void *output
 		jit_object_method(out2_matrix,_jit_sym_getdata,&out2_bp);
 		jit_object_method(out3_matrix,_jit_sym_getdata,&out3_bp);
 
+		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);
+		V_savelock = (long) jit_object_method(x->V,_jit_sym_lock,1);
+
 		if (!in_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
 		if (!out1_bp) { err=JIT_ERR_INVALID_OUTPUT; goto out;}
 		if (!out2_bp) { err=JIT_ERR_INVALID_OUTPUT; goto out;}
 		if (!out3_bp) { err=JIT_ERR_INVALID_OUTPUT; goto out;}
 
 		//setup internal scratch matrices
-		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);
-		V_savelock = (long) jit_object_method(x->V,_jit_sym_lock,1);
-
 		jit_object_method(x->U,_jit_sym_getinfo,&U_minfo);
 		jit_object_method(x->V,_jit_sym_getinfo,&V_minfo);
 
@@ -694,7 +694,7 @@ void xray_jit_svd_sort(t_xray_jit_svd *x, long dimcount, long *dim, long planeco
 		t_jit_matrix_info *V_minfo, char* V)
 {
 	long i, j, ltmp, out_Hoffset, in_Hoffset;
-	long *indices = (long *)jit_getbytes(out2_minfo->dim[0]*out2_minfo->dimstride[0]);
+	long *indices = (long *)jit_getbytes(out2_minfo->dim[0]*sizeof(long));
 	float *fop2, ftmp;
 	double *dop2, dtmp;
 
@@ -797,7 +797,7 @@ void xray_jit_svd_sort(t_xray_jit_svd *x, long dimcount, long *dim, long planeco
 		}
 	}
 
-	jit_freebytes((void *)indices, out2_minfo->dim[0]*out2_minfo->dimstride[0]);
+	jit_freebytes((void *)indices, out2_minfo->dim[0]*sizeof(long));
 }
 
 t_xray_jit_svd *xray_jit_svd_new(void)

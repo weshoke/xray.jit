@@ -209,12 +209,12 @@ void xray_jit_cellcoords_fill_output(t_xray_jit_cellcoords *x,
 		t_jit_matrix_info *out_minfo, char *bop)
 {
 	long i;
-	long *ltp, *lop;
+	t_int32 *ltp, *lop;
 	float *ftp, *fop;
 
 	if (out_minfo->type==_jit_sym_long) {
-		ltp = (long *)btp;
-		lop = (long *)bop;
+		ltp = (t_int32 *)btp;
+		lop = (t_int32 *)bop;
 
 		for(i=0; i < out_minfo->dim[0]; i++) {
 			lop[2*i] = ltp[2*i];
@@ -238,7 +238,7 @@ long xray_jit_cellcoords_calculate_2d_char(t_xray_jit_cellcoords *x, long dimcou
 {
 	long i,j,width,height;
 	uchar *ip;
-	long *tlp;
+	t_int32 *tlp;
 	float *tfp;
 	char plane = CLAMP(x->plane, 0, planecount - 1);
 	long counter = 0;
@@ -265,7 +265,7 @@ long xray_jit_cellcoords_calculate_2d_char(t_xray_jit_cellcoords *x, long dimcou
 		}
 	}
 	else {
-		tlp = (long *)btp;
+		tlp = (t_int32 *)btp;
 
 		for (i=0; i < height; i++) {
 			ip = (uchar *)(bip + i*in_minfo->dimstride[1]);
@@ -291,8 +291,8 @@ long xray_jit_cellcoords_calculate_2d_long(t_xray_jit_cellcoords *x, long dimcou
 		t_jit_matrix_info *temp_minfo, char *btp)
 {
 	long i,j,width,height;
-	long *ip;
-	long *tlp;
+	t_int32 *ip;
+	t_int32 *tlp;
 	float *tfp;
 	char plane = CLAMP(x->plane, 0, planecount - 1);
 	long counter = 0;
@@ -304,7 +304,7 @@ long xray_jit_cellcoords_calculate_2d_long(t_xray_jit_cellcoords *x, long dimcou
 		tfp = (float *)btp;
 
 		for (i=0; i < height; i++) {
-			ip = (long *)(bip + i*in_minfo->dimstride[1]);
+			ip = (t_int32 *)(bip + i*in_minfo->dimstride[1]);
 
 			for (j=0; j < width; j++) {
 				if(*(ip+plane) == 1) {
@@ -319,10 +319,10 @@ long xray_jit_cellcoords_calculate_2d_long(t_xray_jit_cellcoords *x, long dimcou
 		}
 	}
 	else {
-		tlp = (long *)btp;
+		tlp = (t_int32 *)btp;
 
 		for (i=0; i < height; i++) {
-			ip = (long *)(bip + i*in_minfo->dimstride[1]);
+			ip = (t_int32 *)(bip + i*in_minfo->dimstride[1]);
 
 			for (j=0; j < width; j++) {
 				if(*(ip+plane) == 1) {
@@ -346,7 +346,7 @@ long xray_jit_cellcoords_calculate_2d_float32(t_xray_jit_cellcoords *x, long dim
 {
 	long i,j,width,height;
 	float *ip;
-	long *tlp;
+	t_int32 *tlp;
 	float *tfp;
 	char plane = CLAMP(x->plane, 0, planecount - 1);
 	long counter = 0;
@@ -373,7 +373,7 @@ long xray_jit_cellcoords_calculate_2d_float32(t_xray_jit_cellcoords *x, long dim
 		}
 	}
 	else {
-		tlp = (long *)btp;
+		tlp = (t_int32 *)btp;
 
 		for (i=0; i < height; i++) {
 			ip = (float *)(bip + i*in_minfo->dimstride[1]);
@@ -400,7 +400,7 @@ long xray_jit_cellcoords_calculate_2d_float64(t_xray_jit_cellcoords *x, long dim
 {
 	long i,j,width,height;
 	double *ip;
-	long *tlp;
+	t_int32 *tlp;
 	float *tfp;
 	char plane = CLAMP(x->plane, 0, planecount - 1);
 	long counter = 0;
@@ -427,7 +427,7 @@ long xray_jit_cellcoords_calculate_2d_float64(t_xray_jit_cellcoords *x, long dim
 		}
 	}
 	else {
-		tlp = (long *)btp;
+		tlp = (t_int32 *)btp;
 
 		for (i=0; i < height; i++) {
 			ip = (double *)(bip + i*in_minfo->dimstride[1]);

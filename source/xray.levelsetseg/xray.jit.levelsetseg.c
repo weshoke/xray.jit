@@ -50,7 +50,7 @@ typedef struct _xray_jit_levelsetseg
 	long				Na;
 	long				Ng;
 	long				Ns;
-	long				*gaussKernel;
+	t_int32				*gaussKernel;
 
 	t_List				*L_in;
 	t_List				*L_out;
@@ -99,7 +99,7 @@ void evolveCurve(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionSta
 void smoothCurve(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionStats *outside,
 		char *bip1, t_jit_matrix_info* in1_minfo,
 		char *phi_bp, t_jit_matrix_info* phi_minfo,
-		long Ng, long *gaussKernel);
+		long Ng, t_int32 *gaussKernel);
 
 //linked list management methods
 void addPixelToList(t_List *list, long x, long y, char val,
@@ -111,7 +111,7 @@ void cleanListExterior(t_List *list,
 
 //statistics methods
 float calcProb(t_RegionStats *inside, t_RegionStats *outside, uchar pixelValue);
-long calcCurve(long x, long y, long Ng, long *gaussKernel, char *phi, t_jit_matrix_info* phi_minfo);
+long calcCurve(long x, long y, long Ng, t_int32 *gaussKernel, char *phi, t_jit_matrix_info* phi_minfo);
 
 char stoppingConditions(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionStats *outside,
 	char *bip1, t_jit_matrix_info* in1_minfo, char *phi_bp, t_jit_matrix_info* phi_minfo);
@@ -198,7 +198,7 @@ void xray_jit_levelsetseg_Ng(t_xray_jit_levelsetseg *x, void *attr, long argc, t
 	}
 
 	x->Ng = jit_atom_getlong(argv);
-	x->gaussKernel = (long *)jit_getbytes( (x->Ng)*(x->Ng)*sizeof(long) );
+	x->gaussKernel = (t_int32 *)jit_getbytes( (x->Ng)*(x->Ng)*sizeof(long) );
 
 	dx = 2.0f/(x->Ng - 1);
 	dy = dx;
@@ -378,7 +378,7 @@ void switch_in(t_List *L_in, t_List *L_out, t_Node *node,
 		char *phi_bp, t_jit_matrix_info* phi_minfo)
 {
 	long phiRowspan;
-	long *pixel;
+	t_int32 *pixel;
 
 	phiRowspan = phi_minfo->dimstride[1];
 	pixel = node->pixel;
@@ -418,7 +418,7 @@ void cleanListInterior(t_List *list,
 		char *phi_bp, t_jit_matrix_info* phi_minfo)
 {
 	long phiRowspan;
-	long *pixel;
+	t_int32 *pixel;
 	t_Node *node, *tempNode;
 	char edge, region;
 
@@ -455,7 +455,7 @@ void switch_out(t_List *L_in, t_List *L_out, t_Node *node,
 		char *phi_bp, t_jit_matrix_info* phi_minfo)
 {
 	long phiRowspan;
-	long *pixel;
+	t_int32 *pixel;
 
 	phiRowspan = phi_minfo->dimstride[1];
 	pixel = node->pixel;
@@ -495,7 +495,7 @@ void cleanListExterior(t_List *list,
 		char *phi_bp, t_jit_matrix_info* phi_minfo)
 {
 	long phiRowspan;
-	long *pixel;
+	t_int32 *pixel;
 	t_Node *node, *tempNode;
 	char edge, region;
 
@@ -662,7 +662,7 @@ void evolveCurve(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionSta
 void smoothCurve(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionStats *outside,
 		char *bip1, t_jit_matrix_info* in1_minfo,
 		char *phi_bp, t_jit_matrix_info* phi_minfo,
-		long Ng, long *gaussKernel)
+		long Ng, t_int32 *gaussKernel)
 {
 	t_Node *nodeOut, *nodeIn, *tempNode;
 	uchar val;
@@ -723,7 +723,7 @@ void smoothCurve(t_List *L_in, t_List *L_out, t_RegionStats *inside, t_RegionSta
 	cleanListExterior(L_out, phi_bp, phi_minfo);
 }
 
-long calcCurve(long x, long y, long Ng, long *gaussKernel,
+long calcCurve(long x, long y, long Ng, t_int32 *gaussKernel,
 		char *phi, t_jit_matrix_info* phi_minfo)
 {
 	long i, j;

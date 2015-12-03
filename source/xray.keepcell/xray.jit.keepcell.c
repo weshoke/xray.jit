@@ -120,7 +120,7 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 	long outcolspan, outrowspan;
 	float *fip1, *fip2, *fop;
 	uchar *cip1, *cop;
-	long *lip1, *lip2, *lop;
+	t_int32 *lip1, *lip2, *lop;
 	double *dip1, *dop;
 
 	if (dimcount<1) return; //safety
@@ -150,7 +150,7 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 
 
 				for(i=0; i < height2; i++) {
-					lip2 = (long *)(bip2 + i*in2rowspan);
+					lip2 = (t_int32 *)(bip2 + i*in2rowspan);
 					cop = (uchar *)(bop + i*outrowspan);
 
 					for(j=0; j < width2; j++) {
@@ -169,12 +169,12 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 
 
 				for(i=0; i < height2; i++) {
-					lip2 = (long *)(bip2 + i*in2rowspan);
-					lop = (long *)(bop + i*outrowspan);
+					lip2 = (t_int32 *)(bip2 + i*in2rowspan);
+					lop = (t_int32 *)(bop + i*outrowspan);
 
 					for(j=0; j < width2; j++) {
-						lip1 = (long *)(bip1 + (lip2[0])*in1colspan + (lip2[1])*in1rowspan);
-						lop = (long *)(bop + (lip2[0])*outcolspan + (lip2[1])*outrowspan);
+						lip1 = (t_int32 *)(bip1 + (lip2[0])*in1colspan + (lip2[1])*in1rowspan);
+						lop = (t_int32 *)(bop + (lip2[0])*outcolspan + (lip2[1])*outrowspan);
 
 						for(k=0; k < in1planecount; k++) {
 							lop[k] = lip1[k];
@@ -186,7 +186,7 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 			}
 			else if (out_minfo->type==_jit_sym_float32) {
 				for(i=0; i < height2; i++) {
-					lip2 = (long *)(bip2 + i*in2rowspan);
+					lip2 = (t_int32 *)(bip2 + i*in2rowspan);
 					fop = (float *)(bop + i*outrowspan);
 
 					for(j=0; j < width2; j++) {
@@ -203,7 +203,7 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 			}
 			else if (out_minfo->type==_jit_sym_float64) {
 				for(i=0; i < height2; i++) {
-					lip2 = (long *)(bip2 + i*in2rowspan);
+					lip2 = (t_int32 *)(bip2 + i*in2rowspan);
 					dop = (double *)(bop + i*outrowspan);
 
 					for(j=0; j < width2; j++) {
@@ -240,11 +240,11 @@ void xray_jit_keepcell_calculate_ndim(t_xray_jit_keepcell *obj, long dimcount, l
 			else if (out_minfo->type==_jit_sym_long) {
 				for(i=0; i < height2; i++) {
 					fip2 = (float *)(bip2 + i*in2rowspan);
-					lop = (long *)(bop + i*outrowspan);
+					lop = (t_int32 *)(bop + i*outrowspan);
 
 					for(j=0; j < width2; j++) {
-						lip1 = (long *)(bip1 + (long)(fip2[0])*in1colspan + (long)(fip2[1])*in1rowspan);
-						lop = (long *)(bop + (long)(fip2[0])*outcolspan + (long)(fip2[1])*outrowspan);
+						lip1 = (t_int32 *)(bip1 + (long)(fip2[0])*in1colspan + (long)(fip2[1])*in1rowspan);
+						lop = (t_int32 *)(bop + (long)(fip2[0])*outcolspan + (long)(fip2[1])*outrowspan);
 
 						for(k=0; k < in1planecount; k++) {
 							lop[k] = lip1[k];

@@ -226,10 +226,13 @@ t_jit_err xray_jit_contourmap_matrix_calc(t_xray_jit_contourmap *x, void *inputs
 		jit_object_method(in1_matrix,_jit_sym_getinfo,&in1_minfo);
 		jit_object_method(in1_matrix,_jit_sym_getdata,&in1_bp);
 
+		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);
+		X_savelock = (long) jit_object_method(x->X,_jit_sym_lock,1);
+		Y_savelock = (long) jit_object_method(x->Y,_jit_sym_lock,1);
+
 		if (!in1_bp) { err=JIT_ERR_INVALID_INPUT; goto out;}
 
 		//setup internal scratch matrices
-		U_savelock = (long) jit_object_method(x->U,_jit_sym_lock,1);
 		jit_object_method(x->U,_jit_sym_getinfo,&U_minfo);
 
 		if(x->mode == 0) {
@@ -249,8 +252,6 @@ t_jit_err xray_jit_contourmap_matrix_calc(t_xray_jit_contourmap *x, void *inputs
 		if (!x->U) { err=JIT_ERR_INVALID_PTR; goto out;}
 
 		//setup coordinate vectors X and Y based on x->x[] and x->y[] endpoints
-		X_savelock = (long) jit_object_method(x->X,_jit_sym_lock,1);
-		Y_savelock = (long) jit_object_method(x->Y,_jit_sym_lock,1);
 		jit_object_method(x->X,_jit_sym_getinfo,&X_minfo);
 		jit_object_method(x->Y,_jit_sym_getinfo,&Y_minfo);
 

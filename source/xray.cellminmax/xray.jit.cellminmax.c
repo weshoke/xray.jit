@@ -236,7 +236,7 @@ void xray_jit_cellminmax_calculate_ndim(t_xray_jit_cellminmax *x, long dimcount,
 					fop[0] = (float)j;
 
 					for(i=0; i < height; i++) {
-						if(*(long *)(bip1 + i*inrowspan + j*incolspan) != 0)
+						if(*(t_int32 *)(bip1 + i*inrowspan + j*incolspan) != 0)
 							break;
 					}
 
@@ -260,7 +260,7 @@ void xray_jit_cellminmax_calculate_ndim(t_xray_jit_cellminmax *x, long dimcount,
 						fop[0] = (float)j;
 
 						for(i=height-1; i >= 0; i--) {
-							if(*(long *)(bip1 + i*inrowspan + j*incolspan) != 0)
+							if(*(t_int32 *)(bip1 + i*inrowspan + j*incolspan) != 0)
 								break;
 						}
 
@@ -275,7 +275,7 @@ void xray_jit_cellminmax_calculate_ndim(t_xray_jit_cellminmax *x, long dimcount,
 					fop[1] = (float)j;
 
 					for(i=0; i < width; i++) {
-						if(*(long *)(bip1 + j*inrowspan + i*incolspan) != 0)
+						if(*(t_int32 *)(bip1 + j*inrowspan + i*incolspan) != 0)
 							break;
 					}
 
@@ -299,7 +299,7 @@ void xray_jit_cellminmax_calculate_ndim(t_xray_jit_cellminmax *x, long dimcount,
 						fop[1] = (float)j;
 
 						for(i=width-1; i >= 0; i--) {
-							if(*(long *)(bip1 + j*inrowspan + i*incolspan) != 0)
+							if(*(t_int32 *)(bip1 + j*inrowspan + i*incolspan) != 0)
 								break;
 						}
 
