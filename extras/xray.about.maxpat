@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
+			"minor" : 0,
+			"revision" : 6,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
@@ -46,7 +46,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 4,
 					"numoutlets" : 0,
-					"patching_rect" : [ 59.0, 106.0, 85.0, 0.0 ],
+					"patching_rect" : [ 59.0, 106.0, 85.0, 19.0 ],
 					"style" : "",
 					"text" : "bgcolor 50 58 81"
 				}
@@ -77,7 +77,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 30.0, 79.0, 157.0, 18.0 ],
 					"style" : "",
-					"text" : "www.mat.ucsb.edu/~whsmith/",
+					"text" : "www.github.com/weshoke/xray.jit",
 					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
 				}
 
@@ -131,12 +131,12 @@
 		"lines" : [  ],
 		"dependency_cache" : [ 			{
 				"name" : "xray.jit.pct",
-				"bootpath" : "~/Documents/Max 7/Packages/xray-updatedhelps/extras",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
 				"type" : "PICT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }

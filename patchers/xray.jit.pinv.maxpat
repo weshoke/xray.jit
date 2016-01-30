@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
+			"minor" : 0,
+			"revision" : 6,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
@@ -92,7 +92,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 612.0, 58.0, 16.0, 17.0 ],
+					"patching_rect" : [ 598.0, 58.0, 16.0, 17.0 ],
 					"style" : "",
 					"text" : "V",
 					"textcolor" : [ 0.8, 0.611765, 0.380392, 1.0 ]
@@ -107,7 +107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 487.0, 60.0, 16.0, 17.0 ],
+					"patching_rect" : [ 480.0, 58.0, 16.0, 17.0 ],
 					"style" : "",
 					"text" : "∑",
 					"textcolor" : [ 0.8, 0.611765, 0.380392, 1.0 ]
@@ -154,7 +154,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.0, 165.0, 298.0, 62.0 ],
+					"patching_rect" : [ 19.0, 165.0, 300.0, 62.0 ],
 					"style" : "",
 					"text" : "Once the SVD of a matrix is performed, its components are often used several times. Since the SVD is a fairly expensive operation, the decision was made to not include the calculation of the SVD in the abstraction although using this abstraction without the SVD is pointless.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -231,7 +231,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 4,
 					"numoutlets" : 0,
-					"patching_rect" : [ 387.0, 189.0, 85.0, 0.0 ],
+					"patching_rect" : [ 467.0, 208.0, 85.0, 19.0 ],
 					"style" : "",
 					"text" : "bgcolor 50 58 81"
 				}
@@ -246,7 +246,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 467.0, 118.0, 101.0, 19.0 ],
+					"patching_rect" : [ 457.5, 122.0, 101.0, 19.0 ],
 					"style" : "",
 					"text" : "jit.op @op !/ @val 1"
 				}
@@ -261,7 +261,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 339.0, 98.0, 266.0, 19.0 ],
+					"patching_rect" : [ 339.0, 98.0, 256.0, 19.0 ],
 					"style" : "",
 					"text" : "jit.reverse 3"
 				}
@@ -275,7 +275,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 467.0, 58.0, 15.0, 15.0 ],
+					"patching_rect" : [ 458.0, 58.0, 15.0, 15.0 ],
 					"style" : ""
 				}
 
@@ -315,7 +315,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 339.0, 191.0, 15.0, 15.0 ],
+					"patching_rect" : [ 339.0, 199.0, 15.0, 15.0 ],
 					"style" : ""
 				}
 
@@ -329,7 +329,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 339.0, 142.0, 138.0, 19.0 ],
+					"patching_rect" : [ 339.0, 150.0, 138.0, 19.0 ],
 					"style" : "",
 					"text" : "jit.la.mult"
 				}
@@ -344,7 +344,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 339.0, 166.0, 214.0, 19.0 ],
+					"patching_rect" : [ 339.0, 174.0, 214.0, 19.0 ],
 					"style" : "",
 					"text" : "jit.la.mult"
 				}
@@ -358,7 +358,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 595.0, 58.0, 15.0, 15.0 ],
+					"patching_rect" : [ 576.5, 58.0, 15.0, 15.0 ],
 					"style" : ""
 				}
 
@@ -396,7 +396,7 @@
 					"destination" : [ "obj-21", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 595.5, 142.0, 543.5, 142.0 ],
+					"midpoints" : [ 585.5, 142.0, 543.5, 142.0 ],
 					"source" : [ "obj-15", 2 ]
 				}
 
@@ -457,7 +457,7 @@
 			}
  ],
 		"dependency_cache" : [  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }
