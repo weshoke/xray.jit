@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x64",
+			"minor" : 0,
+			"revision" : 6,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 146.0, 79.0, 824.0, 527.0 ],
+		"rect" : [ 146.0, 79.0, 860.0, 633.0 ],
 		"bgcolor" : [ 0.196078, 0.227451, 0.317647, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -39,19 +39,95 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"id" : "obj-1",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 659.656738, 466.0, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "xray.jit",
+					"textcolor" : [ 0.486275, 0.592157, 0.811765, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-36",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 599.656738, 506.0, 157.0, 18.0 ],
+					"style" : "",
+					"text" : "www.github.com/weshoke/xray.jit",
+					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-43",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 659.656738, 487.0, 88.0, 18.0 ],
+					"style" : "",
+					"text" : "by Wesley Smith",
+					"textcolor" : [ 0.886275, 0.905882, 0.929412, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-44",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 608.656738, 467.0, 43.0, 37.0 ],
+					"pic" : "xray.jit.pct"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.211765, 0.227451, 0.305882, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-45",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 595.656738, 463.0, 164.0, 63.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgmode" : 0,
 					"border" : 0,
 					"clickthrough" : 0,
 					"enablehscroll" : 0,
 					"enablevscroll" : 0,
-					"id" : "obj-1",
+					"id" : "obj-3",
 					"lockeddragscroll" : 0,
 					"maxclass" : "bpatcher",
-					"name" : "xray.about.pat",
+					"name" : "demovideo.maxpat",
 					"numinlets" : 0,
-					"numoutlets" : 0,
-					"offset" : [ -26.0, -36.0 ],
-					"patching_rect" : [ 573.0, 401.0, 165.0, 64.0 ],
+					"numoutlets" : 1,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 36.0, 34.0, 230.0, 125.0 ],
 					"viewvisibility" : 1
 				}
 
@@ -65,25 +141,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 86.0, 247.0, 31.0 ],
+					"patching_rect" : [ 482.0, 161.0, 247.0, 31.0 ],
 					"style" : "",
 					"text" : "Takes 1-plane 2D matrices of any type and outputs 3 1-plane 2D float32 or float64 matrices",
 					"textcolor" : [ 0.521569, 0.513726, 0.45098, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-3",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.0, 27.0, 33.0, 21.0 ],
-					"style" : "",
-					"text" : "stop"
 				}
 
 			}
@@ -96,7 +157,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 58.0, 352.0, 31.0 ],
+					"patching_rect" : [ 482.0, 133.0, 352.0, 31.0 ],
 					"style" : "",
 					"text" : "see: http://geosci.uchicago.edu/~gidon/geos31415/genLin/svd.pdf or Wikipedia (especially the links at the bottom of the page)",
 					"textcolor" : [ 0.521569, 0.513726, 0.45098, 1.0 ]
@@ -112,7 +173,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 311.0, 299.0, 43.0 ],
+					"patching_rect" : [ 482.0, 386.0, 302.0, 43.0 ],
 					"style" : "",
 					"text" : "xray.jit.svd always outputs the matrices U, ∑, and V with the largest eignevalue and corresponding eigenvector in the left-most position and the rest in descending order.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -128,7 +189,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 254.0, 293.0, 56.0 ],
+					"patching_rect" : [ 482.0, 329.0, 296.0, 56.0 ],
 					"style" : "",
 					"text" : "The ∑ matrix contains the eigenvalues of the matrix. ∑ is a diagonal matrix although xray.jit.svd outputs this diagonal matrix as a vector since every value in the matrix except values along the diagonal are zero.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -143,7 +204,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 426.0, 393.0, 117.0, 17.0 ],
+					"patching_rect" : [ 441.0, 468.0, 117.0, 17.0 ],
 					"style" : "",
 					"text" : "eigenvectors of A^T*A",
 					"textcolor" : [ 0.8, 0.611765, 0.380392, 1.0 ]
@@ -158,7 +219,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 279.0, 393.0, 61.0, 17.0 ],
+					"patching_rect" : [ 294.0, 468.0, 61.0, 17.0 ],
 					"style" : "",
 					"text" : "eigenvalues",
 					"textcolor" : [ 0.8, 0.611765, 0.380392, 1.0 ]
@@ -173,7 +234,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 62.0, 393.0, 138.0, 17.0 ],
+					"patching_rect" : [ 62.0, 468.0, 138.0, 17.0 ],
 					"style" : "",
 					"text" : "eigenvectors of A*A^T",
 					"textcolor" : [ 0.8, 0.611765, 0.380392, 1.0 ]
@@ -189,7 +250,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 304.0, 63.0, 130.0, 21.0 ],
+					"patching_rect" : [ 319.0, 138.0, 130.0, 21.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "xray.diagonalize.js",
 						"parameter_enable" : 0
@@ -209,7 +270,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 304.0, 27.0, 51.0, 21.0 ],
+					"patching_rect" : [ 319.0, 102.0, 51.0, 21.0 ],
 					"style" : "",
 					"text" : "r sigma"
 				}
@@ -224,7 +285,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 428.0, 27.0, 26.0, 21.0 ],
+					"patching_rect" : [ 443.0, 102.0, 26.0, 21.0 ],
 					"style" : "",
 					"text" : "r V"
 				}
@@ -239,7 +300,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 43.0, 26.0, 21.0 ],
+					"patching_rect" : [ 273.0, 118.0, 26.0, 21.0 ],
 					"style" : "",
 					"text" : "r U"
 				}
@@ -254,7 +315,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 258.0, 119.0, 65.0, 21.0 ],
+					"patching_rect" : [ 273.0, 194.0, 65.0, 21.0 ],
 					"style" : "",
 					"text" : "jit.la.mult"
 				}
@@ -269,7 +330,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 304.0, 91.0, 143.0, 21.0 ],
+					"patching_rect" : [ 319.0, 166.0, 143.0, 21.0 ],
 					"style" : "",
 					"text" : "jit.la.mult"
 				}
@@ -284,7 +345,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 171.0, 294.0, 80.0 ],
+					"patching_rect" : [ 482.0, 246.0, 294.0, 80.0 ],
 					"style" : "",
 					"text" : "The single value decomposition of a matrix breaks the matrix down into fundamental components: eigenvectors and eigenvalues. The U or left-hand matrix gives the eigenvectors spanning column space and the V or right-hand matrix gives the eigenvectors spanning row space. The vectors in both U and V are orthonormal.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -300,7 +361,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 4,
 					"numoutlets" : 0,
-					"patching_rect" : [ 715.0, 145.0, 85.0, 19.0 ],
+					"patching_rect" : [ 730.0, 220.0, 85.0, 19.0 ],
 					"style" : "",
 					"text" : "bgcolor 50 58 81"
 				}
@@ -315,7 +376,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 114.0, 216.0, 31.0 ],
+					"patching_rect" : [ 482.0, 189.0, 216.0, 31.0 ],
 					"style" : "",
 					"text" : "for input A, an mxn matrix, the outputs are matrices U (nxm), ∑ (nx1), and V (nxn)",
 					"textcolor" : [ 0.521569, 0.513726, 0.45098, 1.0 ]
@@ -330,7 +391,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 467.0, 43.0, 225.0, 19.0 ],
+					"patching_rect" : [ 482.0, 118.0, 225.0, 19.0 ],
 					"style" : "",
 					"text" : "singular value decomposition of a matrix",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -345,7 +406,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 464.0, 19.0, 112.0, 29.0 ],
+					"patching_rect" : [ 479.0, 94.0, 112.0, 29.0 ],
 					"style" : "",
 					"text" : "xray.jit.svd",
 					"textcolor" : [ 0.721569, 0.788235, 0.898039, 1.0 ]
@@ -369,7 +430,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "", "", "" ],
-					"patching_rect" : [ 258.0, 143.0, 151.0, 84.0 ],
+					"patching_rect" : [ 273.0, 218.0, 151.0, 84.0 ],
 					"precision" : 4,
 					"rowheight" : 17,
 					"rows" : 4
@@ -393,7 +454,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "", "", "" ],
-					"patching_rect" : [ 225.0, 408.0, 151.0, 33.0 ],
+					"patching_rect" : [ 240.0, 483.0, 151.0, 33.0 ],
 					"precision" : 4,
 					"rowheight" : 17,
 					"rows" : 1
@@ -409,7 +470,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 264.0, 281.0, 78.0, 21.0 ],
+					"patching_rect" : [ 264.0, 356.0, 78.0, 21.0 ],
 					"style" : "",
 					"text" : "jit.transpose"
 				}
@@ -424,7 +485,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 396.0, 388.0, 22.0, 19.0 ],
+					"patching_rect" : [ 411.0, 463.0, 22.0, 19.0 ],
 					"style" : "",
 					"text" : "r V"
 				}
@@ -439,7 +500,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 225.0, 388.0, 43.0, 19.0 ],
+					"patching_rect" : [ 225.0, 463.0, 43.0, 19.0 ],
 					"style" : "",
 					"text" : "r sigma"
 				}
@@ -454,7 +515,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 36.0, 388.0, 22.0, 19.0 ],
+					"patching_rect" : [ 36.0, 463.0, 22.0, 19.0 ],
 					"style" : "",
 					"text" : "r U"
 				}
@@ -468,7 +529,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 264.0, 347.0, 24.0, 21.0 ],
+					"patching_rect" : [ 264.0, 422.0, 24.0, 21.0 ],
 					"style" : "",
 					"text" : "s V"
 				}
@@ -482,7 +543,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 148.5, 320.0, 50.0, 21.0 ],
+					"patching_rect" : [ 148.5, 395.0, 50.0, 21.0 ],
 					"style" : "",
 					"text" : "s sigma"
 				}
@@ -496,7 +557,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 36.0, 320.0, 25.0, 21.0 ],
+					"patching_rect" : [ 36.0, 395.0, 25.0, 21.0 ],
 					"style" : "",
 					"text" : "s U"
 				}
@@ -513,7 +574,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 264.0, 307.0, 60.0, 34.0 ],
+					"patching_rect" : [ 264.0, 382.0, 60.0, 34.0 ],
 					"style" : ""
 				}
 
@@ -529,7 +590,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 148.5, 281.0, 60.0, 34.0 ],
+					"patching_rect" : [ 148.5, 356.0, 60.0, 34.0 ],
 					"style" : ""
 				}
 
@@ -545,7 +606,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 36.0, 281.0, 60.0, 34.0 ],
+					"patching_rect" : [ 36.0, 356.0, 60.0, 34.0 ],
 					"style" : ""
 				}
 
@@ -567,7 +628,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "", "", "" ],
-					"patching_rect" : [ 396.0, 408.0, 151.0, 66.0 ],
+					"patching_rect" : [ 411.0, 483.0, 151.0, 66.0 ],
 					"precision" : 4,
 					"rowheight" : 17,
 					"rows" : 130
@@ -591,7 +652,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "", "", "" ],
-					"patching_rect" : [ 36.0, 408.0, 151.0, 83.0 ],
+					"patching_rect" : [ 36.0, 483.0, 151.0, 83.0 ],
 					"precision" : 4,
 					"rowheight" : 17,
 					"rows" : 4
@@ -607,21 +668,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 36.0, 119.0, 210.0, 21.0 ],
+					"patching_rect" : [ 36.0, 194.0, 210.0, 21.0 ],
 					"style" : "",
 					"text" : "jit.matrix 1 float32 130 4 @adapt 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-36",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 26.0, 23.0, 25.0, 25.0 ],
-					"style" : ""
 				}
 
 			}
@@ -634,54 +683,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 36.0, 91.0, 77.0, 21.0 ],
+					"patching_rect" : [ 36.0, 166.0, 77.0, 21.0 ],
 					"style" : "",
 					"text" : "jit.rgb2luma"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-38",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 55.0, 27.0, 33.0, 21.0 ],
-					"style" : "",
-					"text" : "read"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-39",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 91.0, 27.0, 36.0, 21.0 ],
-					"style" : "",
-					"text" : "start"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-40",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 36.0, 63.0, 167.0, 21.0 ],
-					"style" : "",
-					"text" : "jit.qt.movie 320 240 @vol 0"
 				}
 
 			}
@@ -702,7 +706,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "list", "", "", "" ],
-					"patching_rect" : [ 50.0, 143.0, 151.0, 84.0 ],
+					"patching_rect" : [ 50.0, 218.0, 151.0, 84.0 ],
 					"precision" : 4,
 					"rowheight" : 17,
 					"rows" : 4
@@ -717,9 +721,9 @@
 					"id" : "obj-42",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 36.0, 244.0, 244.0, 21.0 ],
+					"numoutlets" : 4,
+					"outlettype" : [ "jit_matrix", "jit_matrix", "jit_matrix", "" ],
+					"patching_rect" : [ 36.0, 319.0, 244.0, 21.0 ],
 					"style" : "",
 					"text" : "xray.jit.svd"
 				}
@@ -818,10 +822,9 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
+					"destination" : [ "obj-37", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 135.5, 60.0, 45.5, 60.0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -858,7 +861,7 @@
 					"destination" : [ "obj-41", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 45.5, 139.0, 59.5, 139.0 ],
+					"midpoints" : [ 45.5, 214.0, 59.5, 214.0 ],
 					"source" : [ "obj-35", 0 ]
 				}
 
@@ -868,17 +871,8 @@
 					"destination" : [ "obj-42", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 45.5, 242.0, 45.5, 242.0 ],
+					"midpoints" : [ 45.5, 317.0, 45.5, 317.0 ],
 					"source" : [ "obj-35", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-36", 0 ]
 				}
 
 			}
@@ -888,35 +882,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-37", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 64.5, 60.0, 45.5, 60.0 ],
-					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"midpoints" : [ 100.5, 60.0, 45.5, 60.0 ],
-					"source" : [ "obj-39", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-40", 0 ]
 				}
 
 			}
@@ -948,20 +913,36 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-3::obj-4::obj-21" : [ "number", "number", 0 ],
+			"obj-3::obj-4::obj-18" : [ "number[1]", "number[1]", 0 ],
+			"obj-3::obj-4::obj-20" : [ "live.tab[1]", "live.tab[1]", 0 ]
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "xray.diagonalize.js",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/jsextensions",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/jsextensions",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xray.about.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/extras",
-				"type" : "maxb",
+				"name" : "demovideo.maxpat",
+				"bootpath" : "C74:/help/jitter",
+				"type" : "JSON",
 				"implicit" : 1
 			}
+, 			{
+				"name" : "xray.jit.pct",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
+				"type" : "PICT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "xray.jit.svd.mxo",
+				"type" : "iLaX"
+			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }

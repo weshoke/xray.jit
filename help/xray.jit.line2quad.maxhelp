@@ -3,9 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x64",
+			"minor" : 0,
+			"revision" : 6,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -39,20 +39,76 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-1",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "xray.about.pat",
-					"numinlets" : 0,
+					"maxclass" : "comment",
+					"numinlets" : 1,
 					"numoutlets" : 0,
-					"offset" : [ -26.0, -36.0 ],
-					"patching_rect" : [ 815.97644, 395.927704, 165.0, 64.0 ],
-					"viewvisibility" : 1
+					"patching_rect" : [ 865.191895, 407.024109, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "xray.jit",
+					"textcolor" : [ 0.486275, 0.592157, 0.811765, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-48",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 805.191895, 447.024109, 157.0, 18.0 ],
+					"style" : "",
+					"text" : "www.github.com/weshoke/xray.jit",
+					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-49",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 865.191895, 428.024109, 88.0, 18.0 ],
+					"style" : "",
+					"text" : "by Wesley Smith",
+					"textcolor" : [ 0.886275, 0.905882, 0.929412, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-51",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 814.191895, 408.024109, 43.0, 37.0 ],
+					"pic" : "xray.jit.pct"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.211765, 0.227451, 0.305882, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-54",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 801.191895, 404.024109, 164.0, 63.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"style" : ""
 				}
 
 			}
@@ -188,7 +244,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 782.691895, 18.096386, 262.0, 93.0 ],
+					"patching_rect" : [ 782.691895, 18.096386, 264.0, 93.0 ],
 					"style" : "",
 					"text" : "xray.jit.line2quad has 2 modes that calculate the quads differently. In mode 0, the calculation is done purely in 2 dimensions. This can give odd results for lines that don't exist in a single z-plane but is much faster than the 3D calculation. If each individual line is contained in a single z-plane, then this mode will give the exact same results as mode 1",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -297,21 +353,6 @@
 					"style" : "",
 					"text" : "-mode 0, 1",
 					"textcolor" : [ 0.521569, 0.513726, 0.45098, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"hidden" : 1,
-					"id" : "obj-18",
-					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 0,
-					"patching_rect" : [ 590.500488, 390.530121, 101.0, 21.0 ],
-					"style" : "",
-					"text" : "bgcolor 50 58 81"
 				}
 
 			}
@@ -473,8 +514,8 @@
 					"id" : "obj-29",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "jit_matrix", "jit_matrix", "" ],
 					"patching_rect" : [ 294.160706, 452.602417, 110.0, 21.0 ],
 					"style" : "",
 					"text" : "xray.jit.line2quad"
@@ -641,9 +682,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 7,
-							"minor" : 1,
-							"revision" : 0,
-							"architecture" : "x64",
+							"minor" : 0,
+							"revision" : 6,
+							"architecture" : "x86",
 							"modernui" : 1
 						}
 ,
@@ -898,7 +939,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 782.691895, 235.349396, 223.0, 68.0 ],
+					"patching_rect" : [ 782.691895, 235.349396, 225.0, 68.0 ],
 					"style" : "",
 					"text" : "The normalize attribute is useful if all quads generated from the lines need to have the same size, independent of line length. Otherwise, with normalization off, the quads will scale to the line.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
@@ -929,7 +970,7 @@
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 138.311676, 429.662651, 303.660706, 429.662651 ],
+					"midpoints" : [ 138.311676, 429.662659, 303.660706, 429.662659 ],
 					"source" : [ "obj-23", 0 ]
 				}
 
@@ -948,7 +989,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 195.217499, 398.626506, 223.311676, 398.626506 ],
+					"midpoints" : [ 195.217499, 398.626495, 223.311676, 398.626495 ],
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -958,7 +999,7 @@
 					"destination" : [ "obj-23", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 138.311676, 399.975904, 180.811676, 399.975904 ],
+					"midpoints" : [ 138.311676, 399.975891, 180.811676, 399.975891 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -977,7 +1018,7 @@
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 246.754868, 429.662651, 303.660706, 429.662651 ],
+					"midpoints" : [ 246.754868, 429.662659, 303.660706, 429.662659 ],
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -1032,7 +1073,7 @@
 					"destination" : [ "obj-35", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 303.660706, 431.012048, 427.882812, 431.012048 ],
+					"midpoints" : [ 303.660706, 431.012054, 427.882812, 431.012054 ],
 					"source" : [ "obj-30", 0 ]
 				}
 
@@ -1096,7 +1137,7 @@
 					"destination" : [ "obj-33", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 303.660706, 292.024096, 419.619751, 292.024096 ],
+					"midpoints" : [ 303.660706, 292.024109, 419.619751, 292.024109 ],
 					"source" : [ "obj-37", 0 ]
 				}
 
@@ -1189,7 +1230,7 @@
 					"destination" : [ "obj-7", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 66.9478, 397.277108, 68.5, 397.277108 ],
+					"midpoints" : [ 66.9478, 397.2771, 68.5, 397.2771 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -1199,7 +1240,7 @@
 					"destination" : [ "obj-29", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 24.5, 429.662651, 303.660706, 429.662651 ],
+					"midpoints" : [ 24.5, 429.662659, 303.660706, 429.662659 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -1218,20 +1259,24 @@
 					"destination" : [ "obj-26", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 346.60849, 518.722892, 334.285706, 518.722892 ],
+					"midpoints" : [ 346.60849, 518.7229, 334.285706, 518.7229 ],
 					"source" : [ "obj-8", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "xray.about.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/extras",
-				"type" : "maxb",
+				"name" : "xray.jit.pct",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
+				"type" : "PICT",
 				"implicit" : 1
 			}
+, 			{
+				"name" : "xray.jit.line2quad.mxo",
+				"type" : "iLaX"
+			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }

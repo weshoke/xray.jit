@@ -3,9 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x64",
+			"minor" : 0,
+			"revision" : 6,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
@@ -39,36 +39,76 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
-					"id" : "obj-1",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "xray.about.pat",
-					"numinlets" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
+					"id" : "obj-2",
+					"maxclass" : "comment",
+					"numinlets" : 1,
 					"numoutlets" : 0,
-					"offset" : [ -26.0, -36.0 ],
-					"patching_rect" : [ 750.0, 52.0, 165.0, 64.0 ],
-					"viewvisibility" : 1
+					"patching_rect" : [ 734.0, 57.0, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "xray.jit",
+					"textcolor" : [ 0.486275, 0.592157, 0.811765, 1.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"fontname" : "Arial",
-					"fontsize" : 11.0,
-					"id" : "obj-2",
-					"linecount" : 3,
+					"fontsize" : 10.0,
+					"id" : "obj-1",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 509.0, 45.0, 164.0, 43.0 ],
+					"patching_rect" : [ 674.0, 97.0, 157.0, 18.0 ],
 					"style" : "",
-					"text" : "WARNING: this object has changed. The last argument is no longer an index, but a string",
-					"textcolor" : [ 0.968627, 0.2, 0.219608, 1.0 ]
+					"text" : "www.github.com/weshoke/xray.jit",
+					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-68",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 734.0, 78.0, 88.0, 18.0 ],
+					"style" : "",
+					"text" : "by Wesley Smith",
+					"textcolor" : [ 0.886275, 0.905882, 0.929412, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-69",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 683.0, 58.0, 43.0, 37.0 ],
+					"pic" : "xray.jit.pct"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.211765, 0.227451, 0.305882, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-70",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 670.0, 54.0, 164.0, 63.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"style" : ""
 				}
 
 			}
@@ -278,21 +318,6 @@
 					"style" : "",
 					"text" : "note: argument 6 is for giving the 3dbuffer a unique name so that more than one 3dbuffer object can be used without conflict.",
 					"textcolor" : [ 0.698039, 0.705882, 0.654902, 1.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 9.0,
-					"hidden" : 1,
-					"id" : "obj-17",
-					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 0,
-					"patching_rect" : [ 670.0, 208.0, 85.0, 19.0 ],
-					"style" : "",
-					"text" : "bgcolor 50 58 81"
 				}
 
 			}
@@ -900,6 +925,7 @@
 					"bgcolor" : [ 0.611765, 0.701961, 1.0, 1.0 ],
 					"bgcolor2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_color1" : [ 0.611765, 0.701961, 1.0, 1.0 ],
 					"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -924,6 +950,7 @@
 					"bgcolor" : [ 1.0, 0.741176, 0.611765, 1.0 ],
 					"bgcolor2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_color1" : [ 1.0, 0.741176, 0.611765, 1.0 ],
 					"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -948,6 +975,7 @@
 					"bgcolor" : [ 1.0, 0.741176, 0.611765, 1.0 ],
 					"bgcolor2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_angle" : 270.0,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 					"bgfillcolor_color1" : [ 1.0, 0.741176, 0.611765, 1.0 ],
 					"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -1028,6 +1056,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-67",
@@ -1035,9 +1064,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 20.0, 105.0, 124.0, 21.0 ],
+					"patching_rect" : [ 20.0, 105.0, 94.0, 21.0 ],
 					"style" : "",
-					"text" : "jit.qt.movie 320 240"
+					"text" : "jit.movie 320 240"
 				}
 
 			}
@@ -1366,19 +1395,19 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "xray.jit.3dbuffer.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/externals",
-				"type" : "maxb",
+				"name" : "xray.jit.3dbuffer.maxpat",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/patchers",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xray.about.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/extras",
-				"type" : "maxb",
+				"name" : "xray.jit.pct",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
+				"type" : "PICT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }

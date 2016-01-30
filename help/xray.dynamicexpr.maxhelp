@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x64",
+			"minor" : 0,
+			"revision" : 6,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 30.0, 79.0, 1057.0, 764.0 ],
+		"rect" : [ 34.0, 79.0, 1057.0, 764.0 ],
 		"bgcolor" : [ 0.196078, 0.227451, 0.317647, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -39,20 +39,76 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-1",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "xray.about.pat",
-					"numinlets" : 0,
+					"maxclass" : "comment",
+					"numinlets" : 1,
 					"numoutlets" : 0,
-					"offset" : [ -26.0, -36.0 ],
-					"patching_rect" : [ 588.113525, 585.154968, 165.0, 64.0 ],
-					"viewvisibility" : 1
+					"patching_rect" : [ 619.0, 584.0, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "xray.jit",
+					"textcolor" : [ 0.486275, 0.592157, 0.811765, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 559.0, 624.0, 157.0, 18.0 ],
+					"style" : "",
+					"text" : "www.github.com/weshoke/xray.jit",
+					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-11",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 619.0, 605.0, 88.0, 18.0 ],
+					"style" : "",
+					"text" : "by Wesley Smith",
+					"textcolor" : [ 0.886275, 0.905882, 0.929412, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-56",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 568.0, 585.0, 43.0, 37.0 ],
+					"pic" : "xray.jit.pct"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.211765, 0.227451, 0.305882, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-57",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 555.0, 581.0, 164.0, 63.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"style" : ""
 				}
 
 			}
@@ -113,7 +169,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 69.279594, 715.563477, 950.0, 21.0 ],
 					"style" : "",
-					"text" : "\"sin(norm[0]*PI + 150.000*DEGTORAD)\" \\\"75.0000/70*cell[1]*sin(2*PI*norm[0]*norm[1])\\\" \\\"150.000/10*sin(2*PI*abs(0.5-norm[1])*(norm[0])\\\" \"150.000/512*pow(E, (2*norm[1]-0.5)*(norm[0]-0.5)\""
+					"text" : "\"sin(norm[0]*PI + 115.000*DEGTORAD)\" \\\"60.0000/70*cell[0]*sin(2*PI*norm[0]*norm[1])\\\" \\\"115.000/10*sin(2*PI*abs(0.5-norm[1])*(norm[0])\\\" \"115.000/512*pow(E, (2*norm[1]-0.5)*(norm[0]-0.5)\""
 				}
 
 			}
@@ -183,20 +239,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
-					"id" : "obj-11",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 497.215424, 240.366226, 37.0, 21.0 ],
-					"style" : "",
-					"text" : "print"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-12",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -225,7 +267,6 @@
 			}
 , 			{
 				"box" : 				{
-					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-14",
 					"items" : [ "cell[0]", ",", "cell[1]", ",", "norm[0]", ",", "norm[1]", ",", "snorm[0]", ",", "snorm[1]", ",", "dim[0]", ",", "dim[1]", ",", "PI", ",", "TWOPI", ",", "HALFPI", ",", "INVPI", ",", "DEGTORAD", ",", "RADTODEG", ",", "E", ",", "LN2", ",", "LN10", ",", "LOG10E", ",", "LOG2E", ",", "SQRT2", ",", "SQRT1_2" ],
@@ -529,21 +570,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
-					"hidden" : 1,
-					"id" : "obj-34",
-					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 0,
-					"patching_rect" : [ 825.061279, 331.160583, 101.0, 21.0 ],
-					"style" : "",
-					"text" : "bgcolor 50 58 81"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-35",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -760,7 +786,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 119.300919, 13.0, 41.0, 22.0 ],
+					"patching_rect" : [ 111.300919, 13.0, 41.0, 22.0 ],
 					"style" : "default",
 					"triscale" : 0.9
 				}
@@ -781,6 +807,7 @@
 			}
 , 			{
 				"box" : 				{
+					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
 					"id" : "obj-51",
@@ -788,9 +815,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 70.300919, 44.985916, 68.0, 21.0 ],
+					"patching_rect" : [ 70.300919, 44.985916, 60.0, 21.0 ],
 					"style" : "",
-					"text" : "qmetro 66"
+					"text" : "qmetro 30"
 				}
 
 			}
@@ -869,7 +896,7 @@
 					"destination" : [ "obj-43", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 465.253387, 121.943666, 424.807983, 121.943666 ],
+					"midpoints" : [ 465.253387, 121.943665, 424.807983, 121.943665 ],
 					"source" : [ "obj-14", 1 ]
 				}
 
@@ -879,7 +906,7 @@
 					"destination" : [ "obj-18", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 17.5, 295.532428, 95.642151, 295.532428 ],
+					"midpoints" : [ 17.5, 295.53244, 95.642151, 295.53244 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -907,7 +934,7 @@
 					"destination" : [ "obj-54", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 96.142151, 384.028214, 79.800919, 384.028214 ],
+					"midpoints" : [ 96.142151, 384.028229, 79.800919, 384.028229 ],
 					"source" : [ "obj-19", 0 ]
 				}
 
@@ -917,7 +944,7 @@
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 96.142151, 384.028214, 342.28183, 384.028214 ],
+					"midpoints" : [ 96.142151, 384.028229, 342.28183, 384.028229 ],
 					"source" : [ "obj-19", 0 ]
 				}
 
@@ -927,7 +954,7 @@
 					"destination" : [ "obj-19", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 492.41687, 350.698632, 157.142151, 350.698632 ],
+					"midpoints" : [ 492.41687, 350.698639, 157.142151, 350.698639 ],
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -946,7 +973,7 @@
 					"destination" : [ "obj-23", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 581.653809, 251.859183, 670.127686, 251.859183 ],
+					"midpoints" : [ 581.653809, 251.859177, 670.127686, 251.859177 ],
 					"source" : [ "obj-22", 1 ]
 				}
 
@@ -966,7 +993,7 @@
 					"destination" : [ "obj-27", 4 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 611.653809, 202.439459, 610.853809, 202.439459 ],
+					"midpoints" : [ 611.653809, 202.439453, 610.853821, 202.439453 ],
 					"source" : [ "obj-22", 2 ]
 				}
 
@@ -1076,7 +1103,7 @@
 					"destination" : [ "obj-31", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 79.800919, 509.301468, 319.504614, 509.301468, 319.504614, 436.895826, 143.800919, 436.895826 ],
+					"midpoints" : [ 79.800919, 509.301483, 319.504608, 509.301483, 319.504608, 436.895813, 143.800919, 436.895813 ],
 					"source" : [ "obj-32", 0 ]
 				}
 
@@ -1095,7 +1122,7 @@
 					"destination" : [ "obj-6", 0 ],
 					"disabled" : 0,
 					"hidden" : 1,
-					"midpoints" : [ 17.5, 704.816988, 78.779594, 704.816988 ],
+					"midpoints" : [ 17.5, 704.817017, 78.779594, 704.817017 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -1132,7 +1159,7 @@
 					"destination" : [ "obj-22", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 235.807983, 148.422551, 551.653809, 148.422551 ],
+					"midpoints" : [ 235.807983, 148.422546, 551.653809, 148.422546 ],
 					"source" : [ "obj-43", 0 ]
 				}
 
@@ -1142,7 +1169,7 @@
 					"destination" : [ "obj-53", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 235.807983, 148.422551, 126.642151, 148.422551 ],
+					"midpoints" : [ 235.807983, 148.422546, 126.642151, 148.422546 ],
 					"source" : [ "obj-43", 0 ]
 				}
 
@@ -1179,7 +1206,7 @@
 					"destination" : [ "obj-53", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 147.208481, 257.605663, 126.642151, 257.605663 ],
+					"midpoints" : [ 147.208481, 257.605652, 126.642151, 257.605652 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
@@ -1207,7 +1234,7 @@
 					"destination" : [ "obj-14", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 79.800919, 69.121133, 424.753387, 69.121133 ],
+					"midpoints" : [ 79.800919, 69.121132, 424.753387, 69.121132 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -1217,7 +1244,7 @@
 					"destination" : [ "obj-42", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 79.800919, 69.121133, 320.578094, 69.121133 ],
+					"midpoints" : [ 79.800919, 69.121132, 320.578094, 69.121132 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -1227,7 +1254,7 @@
 					"destination" : [ "obj-45", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 79.800919, 69.121133, 234.786652, 69.121133 ],
+					"midpoints" : [ 79.800919, 69.121132, 234.786652, 69.121132 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -1237,7 +1264,7 @@
 					"destination" : [ "obj-52", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 79.800919, 72.56902, 79.800919, 72.56902 ],
+					"midpoints" : [ 79.800919, 72.569023, 79.800919, 72.569023 ],
 					"source" : [ "obj-51", 0 ]
 				}
 
@@ -1290,18 +1317,18 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "xray.dynamicexpr.js",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/jsextensions",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/jsextensions",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xray.about.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/extras",
-				"type" : "maxb",
+				"name" : "xray.jit.pct",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
+				"type" : "PICT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }

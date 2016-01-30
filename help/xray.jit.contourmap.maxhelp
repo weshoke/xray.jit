@@ -3,13 +3,13 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 7,
-			"minor" : 1,
-			"revision" : 0,
-			"architecture" : "x64",
+			"minor" : 0,
+			"revision" : 6,
+			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 111.0, 79.0, 766.0, 456.0 ],
+		"rect" : [ 474.0, 119.0, 766.0, 456.0 ],
 		"bgcolor" : [ 0.196078, 0.227451, 0.317647, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -39,20 +39,76 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"bgmode" : 0,
-					"border" : 0,
-					"clickthrough" : 0,
-					"enablehscroll" : 0,
-					"enablevscroll" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 14.0,
 					"id" : "obj-1",
-					"lockeddragscroll" : 0,
-					"maxclass" : "bpatcher",
-					"name" : "xray.about.pat",
-					"numinlets" : 0,
+					"maxclass" : "comment",
+					"numinlets" : 1,
 					"numoutlets" : 0,
-					"offset" : [ -26.0, -36.0 ],
-					"patching_rect" : [ 468.98938, 351.595856, 165.0, 64.0 ],
-					"viewvisibility" : 1
+					"patching_rect" : [ 549.656738, 361.852509, 52.0, 22.0 ],
+					"style" : "",
+					"text" : "xray.jit",
+					"textcolor" : [ 0.486275, 0.592157, 0.811765, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-11",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 489.656708, 401.852509, 157.0, 18.0 ],
+					"style" : "",
+					"text" : "www.github.com/weshoke/xray.jit",
+					"textcolor" : [ 0.533333, 0.611765, 0.698039, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 549.656738, 382.852509, 88.0, 18.0 ],
+					"style" : "",
+					"text" : "by Wesley Smith",
+					"textcolor" : [ 0.886275, 0.905882, 0.929412, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 498.656708, 362.852509, 43.0, 37.0 ],
+					"pic" : "xray.jit.pct"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"bgcolor" : [ 0.211765, 0.227451, 0.305882, 1.0 ],
+					"border" : 1,
+					"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"id" : "obj-17",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 485.656708, 358.852509, 164.0, 63.0 ],
+					"proportion" : 0.39,
+					"rounded" : 0,
+					"style" : ""
 				}
 
 			}
@@ -361,21 +417,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 11.0,
-					"hidden" : 1,
-					"id" : "obj-28",
-					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 0,
-					"patching_rect" : [ 530.580872, 275.401184, 92.0, 21.0 ],
-					"style" : "",
-					"text" : "bgcolor 50 58 81"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 11.0,
 					"id" : "obj-29",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -644,8 +685,8 @@
 					"id" : "obj-47",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 133.315643, 349.177002, 103.0, 21.0 ],
 					"style" : "",
 					"text" : "xray.jit.contourmap"
@@ -694,7 +735,7 @@
 					"destination" : [ "obj-23", 7 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 282.423065, 252.421829, 232.924402, 252.421829 ],
+					"midpoints" : [ 282.423065, 252.421829, 232.924408, 252.421829 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -704,7 +745,7 @@
 					"destination" : [ "obj-23", 6 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 238.282486, 252.421829, 204.067259, 252.421829 ],
+					"midpoints" : [ 238.282486, 252.421829, 204.067261, 252.421829 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -714,7 +755,7 @@
 					"destination" : [ "obj-23", 5 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 194.141907, 252.421829, 175.210116, 252.421829 ],
+					"midpoints" : [ 194.141907, 252.421829, 175.210114, 252.421829 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -724,7 +765,7 @@
 					"destination" : [ "obj-23", 4 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 150.001328, 252.421829, 146.352973, 252.421829 ],
+					"midpoints" : [ 150.001328, 252.421829, 146.352966, 252.421829 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -734,7 +775,7 @@
 					"destination" : [ "obj-23", 3 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 105.860741, 252.421829, 117.495831, 252.421829 ],
+					"midpoints" : [ 105.860741, 252.421829, 117.495834, 252.421829 ],
 					"source" : [ "obj-18", 0 ]
 				}
 
@@ -753,7 +794,7 @@
 					"destination" : [ "obj-23", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 61.720158, 252.421829, 88.638688, 252.421829 ],
+					"midpoints" : [ 61.720158, 252.421829, 88.638687, 252.421829 ],
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -763,7 +804,7 @@
 					"destination" : [ "obj-23", 1 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 17.579576, 252.421829, 59.781545, 252.421829 ],
+					"midpoints" : [ 17.579575, 252.421829, 59.781544, 252.421829 ],
 					"source" : [ "obj-22", 0 ]
 				}
 
@@ -782,7 +823,7 @@
 					"destination" : [ "obj-47", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 30.924402, 340.710914, 142.815643, 340.710914 ],
+					"midpoints" : [ 30.924402, 340.710907, 142.815643, 340.710907 ],
 					"source" : [ "obj-23", 0 ]
 				}
 
@@ -864,7 +905,7 @@
 					"destination" : [ "obj-47", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 64.799736, 340.710914, 142.815643, 340.710914 ],
+					"midpoints" : [ 64.799736, 340.710907, 142.815643, 340.710907 ],
 					"source" : [ "obj-33", 0 ]
 				}
 
@@ -910,7 +951,7 @@
 					"destination" : [ "obj-45", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 82.250664, 118.174041, 18.606101, 118.174041 ],
+					"midpoints" : [ 82.250664, 118.174042, 18.606102, 118.174042 ],
 					"source" : [ "obj-41", 0 ]
 				}
 
@@ -938,7 +979,7 @@
 					"destination" : [ "obj-45", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 52.606101, 118.174041, 18.606101, 118.174041 ],
+					"midpoints" : [ 52.606102, 118.174042, 18.606102, 118.174042 ],
 					"source" : [ "obj-44", 1 ]
 				}
 
@@ -948,7 +989,7 @@
 					"destination" : [ "obj-45", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 18.606101, 118.174041, 18.606101, 118.174041 ],
+					"midpoints" : [ 18.606102, 118.174042, 18.606102, 118.174042 ],
 					"source" : [ "obj-44", 0 ]
 				}
 
@@ -958,7 +999,7 @@
 					"destination" : [ "obj-37", 3 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 258.813004, 338.292035, 324.813004, 338.292035 ],
+					"midpoints" : [ 258.812988, 338.292023, 324.812988, 338.292023 ],
 					"source" : [ "obj-46", 0 ]
 				}
 
@@ -977,7 +1018,7 @@
 					"destination" : [ "obj-47", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 258.813004, 338.292035, 142.815643, 338.292035 ],
+					"midpoints" : [ 258.812988, 338.292023, 142.815643, 338.292023 ],
 					"source" : [ "obj-46", 0 ]
 				}
 
@@ -1002,13 +1043,17 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "xray.about.pat",
-				"bootpath" : "~/Documents/Max 7/Packages/xray/extras",
-				"type" : "maxb",
+				"name" : "xray.jit.pct",
+				"bootpath" : "~/Documents/Max 7/Packages/XRAY/media",
+				"type" : "PICT",
 				"implicit" : 1
 			}
+, 			{
+				"name" : "xray.jit.contourmap.mxo",
+				"type" : "iLaX"
+			}
  ],
-		"autosave" : 0
+		"embedsnapshot" : 0
 	}
 
 }
